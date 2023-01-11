@@ -13,4 +13,4 @@ hideComments : false
 
 博客工具：[Hugo](https://gohugo.io)
 
-主题：[theme](https://github.com/panr/hugo-theme-terminal)
+主题：[terminal](https://github.com/panr/hugo-theme-terminal)
