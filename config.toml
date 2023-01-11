@@ -1,4 +1,4 @@
-baseURL = "http://theoriz0.github.io/"
+baseURL = "https://theoriz0.github.io/"
 languageCode = "zh-cn"
 title = "theoriz0's blog"
 theme = "terminal"
