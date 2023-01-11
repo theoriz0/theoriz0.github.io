@@ -224,6 +224,6 @@ wsl --terminate CentOS8 重新启动wsl，可以发现用户已经是所设置�
 &lt;p>新建文件：/etc/wsl.conf，内容如下：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>[network]generateResolvConf = false
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></content></item><item><title>关于这个博客</title><link>https://theoriz0.github.io/posts/about-this-blog/</link><pubDate>Wed, 11 Jan 2023 22:16:45 +0800</pubDate><guid>https://theoriz0.github.io/posts/about-this-blog/</guid><description>说明 博客工具：Hugo
-主题：theme</description><content>&lt;h2 id="说明">说明&lt;/h2>
+主题：terminal</description><content>&lt;h2 id="说明">说明&lt;/h2>
 &lt;p>博客工具：&lt;a href="https://gohugo.io">Hugo&lt;/a>&lt;/p>
-&lt;p>主题：&lt;a href="https://github.com/panr/hugo-theme-terminal">theme&lt;/a>&lt;/p></content></item></channel></rss>
+&lt;p>主题：&lt;a href="https://github.com/panr/hugo-theme-terminal">terminal&lt;/a>&lt;/p></content></item></channel></rss>
