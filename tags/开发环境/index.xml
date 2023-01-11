@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>开发环境 on theoriz0's blog</title><link>http://theoriz0.github.io/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</link><description>Recent content in 开发环境 on theoriz0's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 11 Jan 2023 22:32:58 +0800</lastBuildDate><atom:link href="http://theoriz0.github.io/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/index.xml" rel="self" type="application/rss+xml"/><item><title>Golang WSL2 CentOS8 开发环境配置指南</title><link>http://theoriz0.github.io/posts/golang-wsl2-centos8-setup/</link><pubDate>Wed, 11 Jan 2023 22:32:58 +0800</pubDate><guid>http://theoriz0.github.io/posts/golang-wsl2-centos8-setup/</guid><description>获取wsl CentOS8 mishamosher/CentOS-WSL
+安装并启动 CentOS8 解压并运行CentOS8.exe。
+Windows 命令行下运行：
+## 列出所有版本，确认 CentOS8 已安装成功 wsl --list ## 如果有多个发行版，可以将默认版本设为 CentOS8 wsl -s CentOS8 ## 启动。如果设置了默认版本，可以忽略 wsl -d CentOS8 设置root用户密码 passwd root 创建普通用户并加入sudo组 useradd [username] passwd [username] sed -i &amp;#39;/^root.*ALL=(ALL).*ALL/a\[username]\tALL=(ALL) \tALL&amp;#39; /etc/sudoers 替换yum源 mv /etc/yum.repos.d /etc/yum.repos.d.bak # 先备份原有的 Yum 源 mkdir /etc/yum.repos.d curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-vault-8.5.2111.repo yum clean all &amp;amp;&amp;amp; yum makecache 修改wsl默认用户 wsl下：
+vi /etc/wsl.conf 文件内容为：
+[user] default=[username] 保存后退出wsl，并在 Windows 下运行：
+wsl --terminate CentOS8 重新启动wsl，可以发现用户已经是所设置用户而不是root。</description><content>&lt;h2 id="获取wsl-centos8">获取wsl CentOS8&lt;/h2>
+&lt;p>&lt;a href="https://github.com/mishamosher/CentOS-WSL">mishamosher/CentOS-WSL&lt;/a>&lt;/p>
+&lt;h2 id="安装并启动-centos8">安装并启动 CentOS8&lt;/h2>
+&lt;p>解压并运行&lt;code>CentOS8.exe&lt;/code>。&lt;/p>
+&lt;p>Windows 命令行下运行：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">## 列出所有版本，确认 CentOS8 已安装成功&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>wsl --list
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">## 如果有多个发行版，可以将默认版本设为 CentOS8&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>wsl -s CentOS8
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">## 启动。如果设置了默认版本，可以忽略&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>wsl -d CentOS8
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="设置root用户密码">设置root用户密码&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>passwd root
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="创建普通用户并加入sudo组">创建普通用户并加入sudo组&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>useradd &lt;span style="color:#f92672">[&lt;/span>username&lt;span style="color:#f92672">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>passwd &lt;span style="color:#f92672">[&lt;/span>username&lt;span style="color:#f92672">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sed -i &lt;span style="color:#e6db74">&amp;#39;/^root.*ALL=(ALL).*ALL/a\[username]\tALL=(ALL) \tALL&amp;#39;&lt;/span> /etc/sudoers
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="替换yum源">替换yum源&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>mv /etc/yum.repos.d /etc/yum.repos.d.bak &lt;span style="color:#75715e"># 先备份原有的 Yum 源&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>mkdir /etc/yum.repos.d
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-vault-8.5.2111.repo
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>yum clean all &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> yum makecache
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="修改wsl默认用户">修改wsl默认用户&lt;/h2>
+&lt;p>wsl下：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>vi /etc/wsl.conf
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>文件内容为：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>[user]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>default=[username]
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>保存后退出wsl，并在 Windows 下运行：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>wsl --terminate CentOS8
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>重新启动wsl，可以发现用户已经是所设置用户而不是root。&lt;/p>
+&lt;h2 id="获取-windows-主机网络地址">获取 Windows 主机网络地址&lt;/h2>
+&lt;p>wsl下：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>cat /etc/resolv.conf |grep -oP &lt;span style="color:#e6db74">&amp;#39;(?&amp;lt;=nameserver\ ).*&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>尝试ping该地址。&lt;/p>
+&lt;p>如果不通，尝试在 Windows powershell 下放开 vEthernet (WSL) 这张网卡的防火墙，执行：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>New-NetFirewallRule -DisplayName &lt;span style="color:#e6db74">&amp;#34;WSL&amp;#34;&lt;/span> -Direction Inbound -InterfaceAlias &lt;span style="color:#e6db74">&amp;#34;vEthernet (WSL)&amp;#34;&lt;/span> -Action Allow
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="配置homebashrc">配置&lt;code>$HOME/.bashrc&lt;/code>&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span># .bashrc
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># Source global definitions
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>if [ -f /etc/bashrc ]; then
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> . /etc/bashrc
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>fi
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># User specific environment
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>if ! [[ &amp;#34;$PATH&amp;#34; =~ &amp;#34;$HOME/.local/bin:$HOME/bin:&amp;#34; ]]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>then
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> PATH=&amp;#34;$HOME/.local/bin:$HOME/bin:$PATH&amp;#34;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>fi
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export PATH
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># Uncomment the following line if you don&amp;#39;t like systemctl&amp;#39;s auto-paging feature:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># export SYSTEMD_PAGER=
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># User specific aliases and functions
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>alias rm=&amp;#39;rm -i&amp;#39;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>alias cp=&amp;#39;cp -i&amp;#39;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>alias mv=&amp;#39;mv -i&amp;#39;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># Create workspace folder if not exist
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>if [ ! -d $HOME/workspace ]; then
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> mkdir -p $HOME/workspace
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>fi
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># Basic envs
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export LANG=&amp;#34;en_US.UTF-8&amp;#34; # 设置系统语言为 en_US.UTF-8，避免终端出现中文乱码
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export PS1=&amp;#39;[\u@dev \W]$ &amp;#39; # 默认的 PS1 设置会展示全部的路径，为了防止过长，这里只展示：&amp;#34;用户名@dev 最后的目录名&amp;#34;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export WORKSPACE=&amp;#34;$HOME/workspace&amp;#34; # 设置工作目录
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># Default entry folder
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cd $WORKSPACE # 登录系统，默认进入 workspace 目录
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># Go envs
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export GOVERSION=go1.19.4 # Go 版本设置
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export GO_INSTALL_DIR=/usr/local/go # Go 安装目录
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export GOROOT=$GO_INSTALL_DIR/$GOVERSION # GOROOT 设置
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export GOPATH=$WORKSPACE/golang # GOPATH 设置
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export PATH=$GOROOT/bin:$GOPATH/bin:$PATH # 将 Go 语言自带的和通过 go install 安装的二进制文件加入到 PATH 路径中
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export GO111MODULE=&amp;#34;on&amp;#34; # 开启 Go moudles 特性
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export GOPROXY=https://goproxy.cn,direct # 安装 Go 模块时，代理服务器设置
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export GOPRIVATE=
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export GOSUMDB=off # 关闭校验 Go 依赖包的哈希值
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># proxy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>alias proxy=&amp;#34;source ~/proxy.sh&amp;#34;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>proxy set
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="配置clash或其他代理软件">配置clash或其他代理软件&lt;/h3>
+&lt;p>详细可参考：&lt;a href="https://www.cnblogs.com/tuilk/p/16287472.html">WSL2配置代理&lt;/a>&lt;/p>
+&lt;p>开启代理软件的【allow lan/局域网】功能。&lt;/p>
+&lt;p>wsl下：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>export ALL_PROXY&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://{ip}:{port}&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">## 尝试访问google&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl google.com
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>如果不通，检查 Windows 下 clash 防火墙设置。&lt;/p>
+&lt;p>如果成功，可以继续配置 &lt;code>proxy.sh&lt;/code> 方便后续使用 ,修改代理端口号为你代理软件的端口号。&lt;/p>
+&lt;p>创建&lt;code>proxy.sh&lt;/code>：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>vi ~/proxy.sh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>内容为：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>alias proxy&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;source ~/proxy.sh&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>proxy set
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">[&lt;/span>zhang@dev workspace&lt;span style="color:#f92672">]&lt;/span>$ cat ~/proxy.sh
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#!/bin/sh&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>hostip&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">$(&lt;/span>cat /etc/resolv.conf | grep nameserver | awk &lt;span style="color:#e6db74">&amp;#39;{ print $2 }&amp;#39;&lt;/span>&lt;span style="color:#66d9ef">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>wslip&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">$(&lt;/span>hostname -I | awk &lt;span style="color:#e6db74">&amp;#39;{print $1}&amp;#39;&lt;/span>&lt;span style="color:#66d9ef">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>port&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">7890&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>PROXY_HTTP&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>hostip&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">:&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>port&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>set_proxy&lt;span style="color:#f92672">(){&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> export http_proxy&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>PROXY_HTTP&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> export HTTP_PROXY&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>PROXY_HTTP&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> export https_proxy&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>PROXY_HTTP&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> export HTTPS_proxy&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>PROXY_HTTP&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> export ALL_PROXY&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>PROXY_SOCKS5&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> export all_proxy&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>PROXY_SOCKS5&lt;span style="color:#e6db74">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> git config --global http.https://github.com.proxy &lt;span style="color:#e6db74">${&lt;/span>PROXY_HTTP&lt;span style="color:#e6db74">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> git config --global https.https://github.com.proxy &lt;span style="color:#e6db74">${&lt;/span>PROXY_HTTP&lt;span style="color:#e6db74">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34;Proxy has been opened.&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>unset_proxy&lt;span style="color:#f92672">(){&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> unset http_proxy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> unset HTTP_PROXY
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> unset https_proxy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> unset HTTPS_PROXY
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> unset ALL_PROXY
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> unset all_proxy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> git config --global --unset http.https://github.com.proxy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> git config --global --unset https.https://github.com.proxy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34;Proxy has been closed.&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>test_setting&lt;span style="color:#f92672">(){&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34;Host IP:&amp;#34;&lt;/span> &lt;span style="color:#e6db74">${&lt;/span>hostip&lt;span style="color:#e6db74">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34;WSL IP:&amp;#34;&lt;/span> &lt;span style="color:#e6db74">${&lt;/span>wslip&lt;span style="color:#e6db74">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34;Try to connect to Google...&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> resp&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">$(&lt;/span>curl -I -s --connect-timeout &lt;span style="color:#ae81ff">5&lt;/span> -m &lt;span style="color:#ae81ff">5&lt;/span> -w &lt;span style="color:#e6db74">&amp;#34;%{http_code}&amp;#34;&lt;/span> -o /dev/null www.google.com&lt;span style="color:#66d9ef">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">[&lt;/span> &lt;span style="color:#e6db74">${&lt;/span>resp&lt;span style="color:#e6db74">}&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">200&lt;/span> &lt;span style="color:#f92672">]&lt;/span>; &lt;span style="color:#66d9ef">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34;Proxy setup succeeded!&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34;Proxy setup failed!&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">[&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&lt;/span>$1&lt;span style="color:#e6db74">&amp;#34;&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;set&amp;#34;&lt;/span> &lt;span style="color:#f92672">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> set_proxy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">elif&lt;/span> &lt;span style="color:#f92672">[&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&lt;/span>$1&lt;span style="color:#e6db74">&amp;#34;&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;unset&amp;#34;&lt;/span> &lt;span style="color:#f92672">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> unset_proxy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">elif&lt;/span> &lt;span style="color:#f92672">[&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&lt;/span>$1&lt;span style="color:#e6db74">&amp;#34;&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;test&amp;#34;&lt;/span> &lt;span style="color:#f92672">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> test_setting
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">else&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34;Unsupported arguments.&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>使&lt;code>.bashrc&lt;/code>生效&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>source ~/.bashrc
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>如果 yum 失败，可尝试关闭代理。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>proxy unset
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="安装常用依赖">安装常用依赖&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo yum -y install git make autoconf automake cmake perl-CPAN libcurl-devel libtool gcc gcc-c++ glibc-headers zlib-devel git-lfs telnet lrzsz jq expat-devel openssl-devel openssl
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="安装go环境">安装go环境&lt;/h2>
+&lt;p>（如果不需要 go 环境，可删去 .bashrc 的 GO 部分）&lt;/p>
+&lt;p>确认.bashrc的$GOVERSION，如果安装不同版本，修改之。&lt;/p>
+&lt;p>按照go官网下载go。&lt;a href="https://go.dev/dl/">Go官网下载地址&lt;/a>&lt;/p>
+&lt;p>解压:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>rm -rf /usr/local/go &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> tar -C /usr/local/go/$GOVERSION -xzf go1.19.4.linux-amd64.tar.gz
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>详见&lt;a href="https://go.dev/doc/install">Go官网安装指南&lt;/a>。&lt;/p>
+&lt;p>此时 go version应该能输出版本。&lt;/p>
+&lt;h3 id="安装protoc">安装protoc&lt;/h3>
+&lt;p>（最新版本在(github.com)[https://github.com/protocolbuffers/protobuf/releases)，可根据需要自行调整命令)&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>cd /tmp/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>wget https://github.com/protocolbuffers/protobuf/releases/download/v21.9/protobuf-cpp-3.21.9.tar.gz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tar -xvzf protobuf-cpp-3.21.9.tar.gz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cd protobuf-3.21.9/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>./autogen.sh
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>./configure
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>make
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo make install
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>protoc --version
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>在执行 autogen.sh 脚本时，如果遇到以下错误：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>configure.ac:48: installing &amp;#39;./install-sh&amp;#39;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>configure.ac:109: error: required file &amp;#39;./ltmain.sh&amp;#39; not found configure.ac:48: installing &amp;#39;./missing&amp;#39;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>benchmarks/Makefile.am: installing &amp;#39;./depcomp&amp;#39;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>conformance/Makefile.am:362: warning: shell python --version 2&amp;gt;&amp;amp;1: non-POSIX variable name
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>conformance/Makefile.am:362: (probably a GNU make extension)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>conformance/Makefile.am:372: warning: shell python --version 2&amp;gt;&amp;amp;1: non-POSIX variable name
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>conformance/Makefile.am:372: (probably a GNU make extension)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>parallel-tests: installing &amp;#39;./test-driver&amp;#39;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>autoreconf: automake failed with exit status: 1
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>可以通过以下命令配置 libtoolize，并再次运行 autogen.sh 来解决：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>libtoolize --automake --copy --debug --force
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>./autogen.sh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="其他">其他&lt;/h2>
+&lt;h3 id="如果wsl占用内存过大">如果wsl占用内存过大&lt;/h3>
+&lt;p>在windows %UserProfile%目录下修改/新建.wslconfig，内容为：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>[wsl2]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>memory=4GB
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>注：goland wsl服务端 至少需要3.8GB内存&lt;/p>
+&lt;h3 id="如果dns有问题">如果dns有问题&lt;/h3>
+&lt;p>可以在/etc/resolv.conf添加&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span># aliyun dns
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>nameserver 223.5.5.5
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>nameserver 223.6.6.6
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="关闭自动创建etcresolvconf">关闭自动创建/etc/resolv.conf&lt;/h3>
+&lt;p>不建议，因为proxy脚本通过读取该文件获取 wsl 下 windows 的 host ip。&lt;/p>
+&lt;p>新建文件：/etc/wsl.conf，内容如下：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>[network]generateResolvConf = false
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></content></item></channel></rss>
