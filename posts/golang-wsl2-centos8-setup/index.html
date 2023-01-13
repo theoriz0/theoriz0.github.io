@@ -76,11 +76,8 @@
 </span></span><span style=display:flex><span><span style=color:#75715e>## 尝试访问google</span>
 </span></span><span style=display:flex><span>curl google.com
 </span></span></code></pre></div><p>如果不通，检查 Windows 下 clash 防火墙设置。</p><p>如果成功，可以继续配置 <code>proxy.sh</code> 方便后续使用 ,修改代理端口号为你代理软件的端口号。</p><p>创建<code>proxy.sh</code>：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>vi ~/proxy.sh
-</span></span></code></pre></div><p>内容为：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>alias proxy<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;source ~/proxy.sh&#34;</span>
-</span></span><span style=display:flex><span>proxy set
-</span></span><span style=display:flex><span><span style=color:#f92672>[</span>zhang@dev workspace<span style=color:#f92672>]</span>$ cat ~/proxy.sh
-</span></span><span style=display:flex><span><span style=color:#75715e>#!/bin/sh</span>
-</span></span><span style=display:flex><span>hostip<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>cat /etc/resolv.conf | grep nameserver | awk <span style=color:#e6db74>&#39;{ print $2 }&#39;</span><span style=color:#66d9ef>)</span>
+</span></span></code></pre></div><p>内容为：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/sh
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>hostip<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>cat /etc/resolv.conf | grep nameserver | awk <span style=color:#e6db74>&#39;{ print $2 }&#39;</span><span style=color:#66d9ef>)</span>
 </span></span><span style=display:flex><span>wslip<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>hostname -I | awk <span style=color:#e6db74>&#39;{print $1}&#39;</span><span style=color:#66d9ef>)</span>
 </span></span><span style=display:flex><span>port<span style=color:#f92672>=</span><span style=color:#ae81ff>7890</span>
 </span></span><span style=display:flex><span>
