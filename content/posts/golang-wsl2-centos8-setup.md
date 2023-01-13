@@ -175,9 +175,6 @@ vi ~/proxy.sh
 内容为：
 
 ```bash
-alias proxy="source ~/proxy.sh"
-proxy set
-[zhang@dev workspace]$ cat ~/proxy.sh
 #!/bin/sh
 hostip=$(cat /etc/resolv.conf | grep nameserver | awk '{ print $2 }')
 wslip=$(hostname -I | awk '{print $1}')
