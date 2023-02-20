@@ -211,11 +211,8 @@ unset_proxy(){
   echo "Proxy has been closed."
 }
 
-wsl_ip(){
+ip(){
   echo "WSL IP:" ${wslip}
-}
-
-host_ip(){
   echo "Host IP:" ${hostip}
 }
 
@@ -242,6 +239,10 @@ then
 elif [ "$1" = "test" ]
 then
   test_setting
+
+elif [ "$1" = "ip" ]
+then
+  ip
 else
   echo "Unsupported arguments."
 fi
