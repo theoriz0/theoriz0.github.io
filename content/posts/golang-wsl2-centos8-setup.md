@@ -13,7 +13,7 @@ hideComments = false
 color = "" #color from the theme settings
 +++
 
-## 获取wsl CentOS8
+## 获取 WSL CentOS8
 
 [mishamosher/CentOS-WSL](https://github.com/mishamosher/CentOS-WSL)
 
@@ -34,7 +34,7 @@ wsl -s CentOS8
 wsl -d CentOS8
 ```
 
-## 设置root用户密码
+## 设置 root 用户密码
 
 ```bash
 passwd root
@@ -48,7 +48,7 @@ passwd [username]
 sed -i '/^root.*ALL=(ALL).*ALL/a\[username]\tALL=(ALL) \tALL' /etc/sudoers
 ```
 
-## 替换yum源
+## 替换 yum 源
 
 ```bash
 mv /etc/yum.repos.d /etc/yum.repos.d.bak # 先备份原有的 Yum 源
@@ -57,9 +57,9 @@ curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos
 yum clean all && yum makecache
 ```
 
-## 修改wsl默认用户
+## 修改 WSL 默认用户
 
-wsl下：
+WSL 下：
 
 ```bash
 vi /etc/wsl.conf
@@ -72,17 +72,17 @@ vi /etc/wsl.conf
 default=[username]
 ```
 
-保存后退出wsl，并在 Windows 下运行：
+保存后退出WSL，并在 Windows 下运行：
 
 ```bash
 wsl --terminate CentOS8
 ```
 
-重新启动wsl，可以发现用户已经是所设置用户而不是root。
+重新启动 WSL，可以发现用户已经是所设置用户而不是root。
 
 ## 获取 Windows 主机网络地址
 
-wsl下：
+WSL下：
 ```bash
 cat /etc/resolv.conf |grep -oP '(?<=nameserver\ ).*'
 ```
@@ -95,8 +95,8 @@ cat /etc/resolv.conf |grep -oP '(?<=nameserver\ ).*'
 New-NetFirewallRule -DisplayName "WSL" -Direction Inbound -InterfaceAlias "vEthernet (WSL)" -Action Allow
 ```
 
-## 配置```$HOME/.bashrc```
-```text
+## 配置 ```$HOME/.bashrc```
+```bash
 # .bashrc
 
 # Source global definitions
@@ -154,7 +154,7 @@ proxy set
 
 开启代理软件的【allow lan/局域网】功能。
 
-wsl下：
+WSL 下：
 
 ```bash
 export ALL_PROXY="http://{ip}:{port}"
@@ -166,7 +166,7 @@ curl google.com
 
 如果成功，可以继续配置 ```proxy.sh``` 方便后续使用 ,修改代理端口号为你代理软件的端口号。
 
-创建```proxy.sh```：
+创建 ```proxy.sh```：
 
 ```bash
 vi ~/proxy.sh
@@ -209,6 +209,14 @@ unset_proxy(){
   git config --global --unset https.https://github.com.proxy
 
   echo "Proxy has been closed."
+}
+
+wsl_ip(){
+  echo "WSL IP:" ${wslip}
+}
+
+host_ip(){
+  echo "Host IP:" ${hostip}
 }
 
 test_setting(){
@@ -269,7 +277,7 @@ sudo yum -y install git make autoconf automake cmake perl-CPAN libcurl-devel lib
 rm -rf /usr/local/go && tar -C /usr/local/go/$GOVERSION -xzf go1.19.4.linux-amd64.tar.gz
 ```
 
-详见[Go官网安装指南](https://go.dev/doc/install)。
+详见 [Go官网安装指南](https://go.dev/doc/install)。
 
 此时 go version应该能输出版本。
 
@@ -308,19 +316,67 @@ libtoolize --automake --copy --debug --force
 ./autogen.sh
 ```
 
+## 安装配置 Docker
+
+安装 docker desktop
+
+检查 docker desktop 设置，确保：
+
+- ```General - Use the WSL2 ...``` 选中
+- ```Resource - WSL Integration：Enable integration...``` 选中；指定的 WSL Distro（CentOS8）开关打开。
+
+如果报 ```Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock```，可运行以下语句设置权限：
+
+```bash
+sudo setfacl --modify user:<user name or ID>:rw /var/run/docker.sock
+```
+
+(来源：[StackOverflow](https://stackoverflow.com/questions/51342810/how-to-fix-dial-unix-var-run-docker-sock-connect-permission-denied-when-gro))
+
+如果报```failed to solve with frontend dockerfile.v0: failed to create LLB definition```，需在 docker desktop 中配置:
+
+- docker engine: ```"features": {"buildkit": false },```
+
+并重新用```setfacl```设置权限
+
+（来源：[CSDN](https://blog.csdn.net/qq_41240287/article/details/125236997)）
+
+## 创建默认 K8S 环境
+
+在 Docker Desktop 中设置：
+
+- Kubernetes：勾选 Enable Kubernetes
+
+在 WSL 中检查 K8S 服务情况：
+
+```bash
+# 关闭网络代理
+proxy unset
+
+kubectl version
+kubectl cluster-info
+```
+
+从 pod 中访问 WSL 资源时要使用 WSL 的 ip，而不是 localhost。获取方法：
+```bash
+proxy WSL_ip
+## 或者
+hostname -I | awk '{print $1}'
+```
+
 ## 其他
 
-### 如果wsl占用内存过大
-在windows %UserProfile%目录下修改/新建.wslconfig，内容为：
+### 如果 WSL 占用内存过大
+在 Windows %UserProfile%目录下修改/新建 ```.wslconfig```，内容为：
 
 ```text
 [wsl2]
 memory=4GB
 ```
 
-注：goland wsl服务端 至少需要3.8GB内存
+注：goland WSL服务端 至少需要3.8GB内存
 
-### 如果dns有问题
+### 如果域名解析有问题
 可以在/etc/resolv.conf添加
 ```text
 # aliyun dns
@@ -328,8 +384,8 @@ nameserver 223.5.5.5
 nameserver 223.6.6.6
 ```
 
-### 关闭自动创建/etc/resolv.conf
-不建议，因为proxy脚本通过读取该文件获取 wsl 下 windows 的 host ip。
+### （不建议关闭）关闭自动创建 /etc/resolv.conf
+不建议关闭，因为 proxy.sh 脚本通过读取该文件获取 WSL 下 Windows 的 host ip。
 
 新建文件：/etc/wsl.conf，内容如下：
 ```text
