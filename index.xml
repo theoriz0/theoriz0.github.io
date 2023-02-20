@@ -1,10 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>theoriz0's blog</title><link>https://theoriz0.github.io/</link><description>Recent content on theoriz0's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 11 Jan 2023 22:32:58 +0800</lastBuildDate><atom:link href="https://theoriz0.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Golang WSL2 CentOS8 开发环境配置指南</title><link>https://theoriz0.github.io/posts/golang-wsl2-centos8-setup/</link><pubDate>Wed, 11 Jan 2023 22:32:58 +0800</pubDate><guid>https://theoriz0.github.io/posts/golang-wsl2-centos8-setup/</guid><description>获取wsl CentOS8 mishamosher/CentOS-WSL
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>theoriz0's blog</title><link>https://theoriz0.github.io/</link><description>Recent content on theoriz0's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 11 Jan 2023 22:32:58 +0800</lastBuildDate><atom:link href="https://theoriz0.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Golang WSL2 CentOS8 开发环境配置指南</title><link>https://theoriz0.github.io/posts/golang-wsl2-centos8-setup/</link><pubDate>Wed, 11 Jan 2023 22:32:58 +0800</pubDate><guid>https://theoriz0.github.io/posts/golang-wsl2-centos8-setup/</guid><description>获取 WSL CentOS8 mishamosher/CentOS-WSL
 安装并启动 CentOS8 解压并运行CentOS8.exe。
 Windows 命令行下运行：
-## 列出所有版本，确认 CentOS8 已安装成功 wsl --list ## 如果有多个发行版，可以将默认版本设为 CentOS8 wsl -s CentOS8 ## 启动。如果设置了默认版本，可以忽略 wsl -d CentOS8 设置root用户密码 passwd root 创建普通用户并加入sudo组 useradd [username] passwd [username] sed -i &amp;#39;/^root.*ALL=(ALL).*ALL/a\[username]\tALL=(ALL) \tALL&amp;#39; /etc/sudoers 替换yum源 mv /etc/yum.repos.d /etc/yum.repos.d.bak # 先备份原有的 Yum 源 mkdir /etc/yum.repos.d curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-vault-8.5.2111.repo yum clean all &amp;amp;&amp;amp; yum makecache 修改wsl默认用户 wsl下：
-vi /etc/wsl.conf 文件内容为：
-[user] default=[username] 保存后退出wsl，并在 Windows 下运行：
-wsl --terminate CentOS8 重新启动wsl，可以发现用户已经是所设置用户而不是root。</description><content>&lt;h2 id="获取wsl-centos8">获取wsl CentOS8&lt;/h2>
+## 列出所有版本，确认 CentOS8 已安装成功 wsl --list ## 如果有多个发行版，可以将默认版本设为 CentOS8 wsl -s CentOS8 ## 启动。如果设置了默认版本，可以忽略 wsl -d CentOS8 设置 root 用户密码 passwd root 创建普通用户并加入sudo组 useradd [username] passwd [username] sed -i &amp;#39;/^root.*ALL=(ALL).*ALL/a\[username]\tALL=(ALL) \tALL&amp;#39; /etc/sudoers 替换 yum 源 mv /etc/yum.repos.d /etc/yum.repos.d.bak # 先备份原有的 Yum 源 mkdir /etc/yum.repos.d curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-vault-8.5.2111.repo yum clean all &amp;amp;&amp;amp; yum makecache 修改 WSL 默认用户 WSL 下：
+vi /etc/wsl.conf 文件内容为：</description><content>&lt;h2 id="获取-wsl-centos8">获取 WSL CentOS8&lt;/h2>
 &lt;p>&lt;a href="https://github.com/mishamosher/CentOS-WSL">mishamosher/CentOS-WSL&lt;/a>&lt;/p>
 &lt;h2 id="安装并启动-centos8">安装并启动 CentOS8&lt;/h2>
 &lt;p>解压并运行&lt;code>CentOS8.exe&lt;/code>。&lt;/p>
@@ -17,92 +15,92 @@ wsl --terminate CentOS8 重新启动wsl，可以发现用户已经是所设置�
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">## 启动。如果设置了默认版本，可以忽略&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>wsl -d CentOS8
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="设置root用户密码">设置root用户密码&lt;/h2>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="设置-root-用户密码">设置 root 用户密码&lt;/h2>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>passwd root
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="创建普通用户并加入sudo组">创建普通用户并加入sudo组&lt;/h2>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>useradd &lt;span style="color:#f92672">[&lt;/span>username&lt;span style="color:#f92672">]&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>passwd &lt;span style="color:#f92672">[&lt;/span>username&lt;span style="color:#f92672">]&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sed -i &lt;span style="color:#e6db74">&amp;#39;/^root.*ALL=(ALL).*ALL/a\[username]\tALL=(ALL) \tALL&amp;#39;&lt;/span> /etc/sudoers
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="替换yum源">替换yum源&lt;/h2>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="替换-yum-源">替换 yum 源&lt;/h2>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>mv /etc/yum.repos.d /etc/yum.repos.d.bak &lt;span style="color:#75715e"># 先备份原有的 Yum 源&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>mkdir /etc/yum.repos.d
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-vault-8.5.2111.repo
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>yum clean all &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> yum makecache
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="修改wsl默认用户">修改wsl默认用户&lt;/h2>
-&lt;p>wsl下：&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="修改-wsl-默认用户">修改 WSL 默认用户&lt;/h2>
+&lt;p>WSL 下：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>vi /etc/wsl.conf
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>文件内容为：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>[user]
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>default=[username]
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>保存后退出wsl，并在 Windows 下运行：&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>保存后退出WSL，并在 Windows 下运行：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>wsl --terminate CentOS8
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>重新启动wsl，可以发现用户已经是所设置用户而不是root。&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>重新启动 WSL，可以发现用户已经是所设置用户而不是root。&lt;/p>
 &lt;h2 id="获取-windows-主机网络地址">获取 Windows 主机网络地址&lt;/h2>
-&lt;p>wsl下：&lt;/p>
+&lt;p>WSL下：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>cat /etc/resolv.conf |grep -oP &lt;span style="color:#e6db74">&amp;#39;(?&amp;lt;=nameserver\ ).*&amp;#39;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>尝试ping该地址。&lt;/p>
 &lt;p>如果不通，尝试在 Windows powershell 下放开 vEthernet (WSL) 这张网卡的防火墙，执行：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>New-NetFirewallRule -DisplayName &lt;span style="color:#e6db74">&amp;#34;WSL&amp;#34;&lt;/span> -Direction Inbound -InterfaceAlias &lt;span style="color:#e6db74">&amp;#34;vEthernet (WSL)&amp;#34;&lt;/span> -Action Allow
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="配置homebashrc">配置&lt;code>$HOME/.bashrc&lt;/code>&lt;/h2>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span># .bashrc
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="配置-homebashrc">配置 &lt;code>$HOME/.bashrc&lt;/code>&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># .bashrc&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># Source global definitions
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>if [ -f /etc/bashrc ]; then
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Source global definitions&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">[&lt;/span> -f /etc/bashrc &lt;span style="color:#f92672">]&lt;/span>; &lt;span style="color:#66d9ef">then&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> . /etc/bashrc
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>fi
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">fi&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># User specific environment
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>if ! [[ &amp;#34;$PATH&amp;#34; =~ &amp;#34;$HOME/.local/bin:$HOME/bin:&amp;#34; ]]
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>then
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> PATH=&amp;#34;$HOME/.local/bin:$HOME/bin:$PATH&amp;#34;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>fi
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># User specific environment&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">if&lt;/span> ! &lt;span style="color:#f92672">[[&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&lt;/span>$PATH&lt;span style="color:#e6db74">&amp;#34;&lt;/span> &lt;span style="color:#f92672">=&lt;/span>~ &lt;span style="color:#e6db74">&amp;#34;&lt;/span>$HOME&lt;span style="color:#e6db74">/.local/bin:&lt;/span>$HOME&lt;span style="color:#e6db74">/bin:&amp;#34;&lt;/span> &lt;span style="color:#f92672">]]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> PATH&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>$HOME&lt;span style="color:#e6db74">/.local/bin:&lt;/span>$HOME&lt;span style="color:#e6db74">/bin:&lt;/span>$PATH&lt;span style="color:#e6db74">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">fi&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export PATH
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># Uncomment the following line if you don&amp;#39;t like systemctl&amp;#39;s auto-paging feature:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># export SYSTEMD_PAGER=
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Uncomment the following line if you don&amp;#39;t like systemctl&amp;#39;s auto-paging feature:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># export SYSTEMD_PAGER=&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># User specific aliases and functions
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>alias rm=&amp;#39;rm -i&amp;#39;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>alias cp=&amp;#39;cp -i&amp;#39;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>alias mv=&amp;#39;mv -i&amp;#39;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># User specific aliases and functions&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>alias rm&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;rm -i&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>alias cp&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;cp -i&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>alias mv&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;mv -i&amp;#39;&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># Create workspace folder if not exist
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>if [ ! -d $HOME/workspace ]; then
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Create workspace folder if not exist&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">[&lt;/span> ! -d $HOME/workspace &lt;span style="color:#f92672">]&lt;/span>; &lt;span style="color:#66d9ef">then&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> mkdir -p $HOME/workspace
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>fi
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">fi&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># Basic envs
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export LANG=&amp;#34;en_US.UTF-8&amp;#34; # 设置系统语言为 en_US.UTF-8，避免终端出现中文乱码
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export PS1=&amp;#39;[\u@dev \W]$ &amp;#39; # 默认的 PS1 设置会展示全部的路径，为了防止过长，这里只展示：&amp;#34;用户名@dev 最后的目录名&amp;#34;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export WORKSPACE=&amp;#34;$HOME/workspace&amp;#34; # 设置工作目录
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Basic envs&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export LANG&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;en_US.UTF-8&amp;#34;&lt;/span> &lt;span style="color:#75715e"># 设置系统语言为 en_US.UTF-8，避免终端出现中文乱码&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export PS1&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;[\u@dev \W]$ &amp;#39;&lt;/span> &lt;span style="color:#75715e"># 默认的 PS1 设置会展示全部的路径，为了防止过长，这里只展示：&amp;#34;用户名@dev 最后的目录名&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export WORKSPACE&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>$HOME&lt;span style="color:#e6db74">/workspace&amp;#34;&lt;/span> &lt;span style="color:#75715e"># 设置工作目录&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># Default entry folder
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cd $WORKSPACE # 登录系统，默认进入 workspace 目录
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Default entry folder&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cd $WORKSPACE &lt;span style="color:#75715e"># 登录系统，默认进入 workspace 目录&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># Go envs
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export GOVERSION=go1.19.4 # Go 版本设置
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export GO_INSTALL_DIR=/usr/local/go # Go 安装目录
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export GOROOT=$GO_INSTALL_DIR/$GOVERSION # GOROOT 设置
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export GOPATH=$WORKSPACE/golang # GOPATH 设置
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export PATH=$GOROOT/bin:$GOPATH/bin:$PATH # 将 Go 语言自带的和通过 go install 安装的二进制文件加入到 PATH 路径中
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export GO111MODULE=&amp;#34;on&amp;#34; # 开启 Go moudles 特性
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export GOPROXY=https://goproxy.cn,direct # 安装 Go 模块时，代理服务器设置
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export GOPRIVATE=
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export GOSUMDB=off # 关闭校验 Go 依赖包的哈希值
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Go envs&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export GOVERSION&lt;span style="color:#f92672">=&lt;/span>go1.19.4 &lt;span style="color:#75715e"># Go 版本设置&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export GO_INSTALL_DIR&lt;span style="color:#f92672">=&lt;/span>/usr/local/go &lt;span style="color:#75715e"># Go 安装目录&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export GOROOT&lt;span style="color:#f92672">=&lt;/span>$GO_INSTALL_DIR/$GOVERSION &lt;span style="color:#75715e"># GOROOT 设置&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export GOPATH&lt;span style="color:#f92672">=&lt;/span>$WORKSPACE/golang &lt;span style="color:#75715e"># GOPATH 设置&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export PATH&lt;span style="color:#f92672">=&lt;/span>$GOROOT/bin:$GOPATH/bin:$PATH &lt;span style="color:#75715e"># 将 Go 语言自带的和通过 go install 安装的二进制文件加入到 PATH 路径中&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export GO111MODULE&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;on&amp;#34;&lt;/span> &lt;span style="color:#75715e"># 开启 Go moudles 特性&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export GOPROXY&lt;span style="color:#f92672">=&lt;/span>https://goproxy.cn,direct &lt;span style="color:#75715e"># 安装 Go 模块时，代理服务器设置&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export GOPRIVATE&lt;span style="color:#f92672">=&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export GOSUMDB&lt;span style="color:#f92672">=&lt;/span>off &lt;span style="color:#75715e"># 关闭校验 Go 依赖包的哈希值&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># proxy
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>alias proxy=&amp;#34;source ~/proxy.sh&amp;#34;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># proxy&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>alias proxy&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;source ~/proxy.sh&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>proxy set
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="配置clash或其他代理软件">配置clash或其他代理软件&lt;/h3>
 &lt;p>详细可参考：&lt;a href="https://www.cnblogs.com/tuilk/p/16287472.html">WSL2配置代理&lt;/a>&lt;/p>
 &lt;p>开启代理软件的【allow lan/局域网】功能。&lt;/p>
-&lt;p>wsl下：&lt;/p>
+&lt;p>WSL 下：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>export ALL_PROXY&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://{ip}:{port}&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">## 尝试访问google&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl google.com
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>如果不通，检查 Windows 下 clash 防火墙设置。&lt;/p>
 &lt;p>如果成功，可以继续配置 &lt;code>proxy.sh&lt;/code> 方便后续使用 ,修改代理端口号为你代理软件的端口号。&lt;/p>
-&lt;p>创建&lt;code>proxy.sh&lt;/code>：&lt;/p>
+&lt;p>创建 &lt;code>proxy.sh&lt;/code>：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>vi ~/proxy.sh
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>内容为：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#!/bin/sh
@@ -139,6 +137,14 @@ wsl --terminate CentOS8 重新启动wsl，可以发现用户已经是所设置�
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> git config --global --unset https.https://github.com.proxy
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34;Proxy has been closed.&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>wsl_ip&lt;span style="color:#f92672">(){&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34;WSL IP:&amp;#34;&lt;/span> &lt;span style="color:#e6db74">${&lt;/span>wslip&lt;span style="color:#e6db74">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>host_ip&lt;span style="color:#f92672">(){&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34;Host IP:&amp;#34;&lt;/span> &lt;span style="color:#e6db74">${&lt;/span>hostip&lt;span style="color:#e6db74">}&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">}&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>test_setting&lt;span style="color:#f92672">(){&lt;/span>
@@ -179,7 +185,7 @@ wsl --terminate CentOS8 重新启动wsl，可以发现用户已经是所设置�
 &lt;p>按照go官网下载go。&lt;a href="https://go.dev/dl/">Go官网下载地址&lt;/a>&lt;/p>
 &lt;p>解压:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>rm -rf /usr/local/go &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> tar -C /usr/local/go/$GOVERSION -xzf go1.19.4.linux-amd64.tar.gz
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>详见&lt;a href="https://go.dev/doc/install">Go官网安装指南&lt;/a>。&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>详见 &lt;a href="https://go.dev/doc/install">Go官网安装指南&lt;/a>。&lt;/p>
 &lt;p>此时 go version应该能输出版本。&lt;/p>
 &lt;h3 id="安装protoc">安装protoc&lt;/h3>
 &lt;p>（最新版本在(github.com)[https://github.com/protocolbuffers/protobuf/releases)，可根据需要自行调整命令)&lt;/p>
@@ -205,19 +211,50 @@ wsl --terminate CentOS8 重新启动wsl，可以发现用户已经是所设置�
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>可以通过以下命令配置 libtoolize，并再次运行 autogen.sh 来解决：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>libtoolize --automake --copy --debug --force
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>./autogen.sh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="安装配置-docker">安装配置 Docker&lt;/h2>
+&lt;p>安装 docker desktop&lt;/p>
+&lt;p>检查 docker desktop 设置，确保：&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>General - Use the WSL2 ...&lt;/code> 选中&lt;/li>
+&lt;li>&lt;code>Resource - WSL Integration：Enable integration...&lt;/code> 选中；指定的 WSL Distro（CentOS8）开关打开。&lt;/li>
+&lt;/ul>
+&lt;p>如果报 &lt;code>Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock&lt;/code>，可运行以下语句设置权限：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo setfacl --modify user:&amp;lt;user name or ID&amp;gt;:rw /var/run/docker.sock
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>(来源：&lt;a href="https://stackoverflow.com/questions/51342810/how-to-fix-dial-unix-var-run-docker-sock-connect-permission-denied-when-gro">StackOverflow&lt;/a>)&lt;/p>
+&lt;p>如果报&lt;code>failed to solve with frontend dockerfile.v0: failed to create LLB definition&lt;/code>，需在 docker desktop 中配置:&lt;/p>
+&lt;ul>
+&lt;li>docker engine: &lt;code>&amp;quot;features&amp;quot;: {&amp;quot;buildkit&amp;quot;: false },&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>并重新用&lt;code>setfacl&lt;/code>设置权限&lt;/p>
+&lt;p>（来源：&lt;a href="https://blog.csdn.net/qq_41240287/article/details/125236997">CSDN&lt;/a>）&lt;/p>
+&lt;h2 id="创建默认-k8s-环境">创建默认 K8S 环境&lt;/h2>
+&lt;p>在 Docker Desktop 中设置：&lt;/p>
+&lt;ul>
+&lt;li>Kubernetes：勾选 Enable Kubernetes&lt;/li>
+&lt;/ul>
+&lt;p>在 WSL 中检查 K8S 服务情况：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 关闭网络代理&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>proxy unset
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kubectl version
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kubectl cluster-info
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>从 pod 中访问 WSL 资源时要使用 WSL 的 ip，而不是 localhost。获取方法：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>proxy WSL_ip
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">## 或者&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>hostname -I | awk &lt;span style="color:#e6db74">&amp;#39;{print $1}&amp;#39;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="其他">其他&lt;/h2>
-&lt;h3 id="如果wsl占用内存过大">如果wsl占用内存过大&lt;/h3>
-&lt;p>在windows %UserProfile%目录下修改/新建.wslconfig，内容为：&lt;/p>
+&lt;h3 id="如果-wsl-占用内存过大">如果 WSL 占用内存过大&lt;/h3>
+&lt;p>在 Windows %UserProfile%目录下修改/新建 &lt;code>.wslconfig&lt;/code>，内容为：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>[wsl2]
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>memory=4GB
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>注：goland wsl服务端 至少需要3.8GB内存&lt;/p>
-&lt;h3 id="如果dns有问题">如果dns有问题&lt;/h3>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>注：goland WSL服务端 至少需要3.8GB内存&lt;/p>
+&lt;h3 id="如果域名解析有问题">如果域名解析有问题&lt;/h3>
 &lt;p>可以在/etc/resolv.conf添加&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span># aliyun dns
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>nameserver 223.5.5.5
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>nameserver 223.6.6.6
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="关闭自动创建etcresolvconf">关闭自动创建/etc/resolv.conf&lt;/h3>
-&lt;p>不建议，因为proxy脚本通过读取该文件获取 wsl 下 windows 的 host ip。&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="不建议关闭关闭自动创建-etcresolvconf">（不建议关闭）关闭自动创建 /etc/resolv.conf&lt;/h3>
+&lt;p>不建议关闭，因为 proxy.sh 脚本通过读取该文件获取 WSL 下 Windows 的 host ip。&lt;/p>
 &lt;p>新建文件：/etc/wsl.conf，内容如下：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>[network]generateResolvConf = false
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></content></item><item><title>关于这个博客</title><link>https://theoriz0.github.io/posts/about-this-blog/</link><pubDate>Wed, 11 Jan 2023 22:16:45 +0800</pubDate><guid>https://theoriz0.github.io/posts/about-this-blog/</guid><description>说明 博客工具：Hugo
