@@ -240,7 +240,7 @@ vi /etc/wsl.conf 文件内容为：</description><content>&lt;h2 id="获取-wsl-
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kubectl version
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kubectl cluster-info
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>从 pod 中访问 WSL 资源时要使用 WSL 的 ip，而不是 localhost。获取方法：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>proxy WSL_ip
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>proxy ip
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">## 或者&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>hostname -I | awk &lt;span style="color:#e6db74">&amp;#39;{print $1}&amp;#39;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="其他">其他&lt;/h2>
