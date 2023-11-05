@@ -1,19 +1,21 @@
 # theoriz0.github.io
 
-个人博客。
+## 个人博客
+
 [关于这个博客](https://theoriz0.github.io/posts/my-first-post/)
 
-安装 Hugo：
-
-[Hugo - Install](https://gohugo.io/installation/)
+## 如何使用
 
 ```bash
-go install -tags extended github.com/gohugoio/hugo@latest
+git clone --recurse-submodules <this-repo>
 ```
 
-使用 Hugo
+或者clone后
+
 ```bash
-hugo new posts/your-post.md
-
-hugo serve
+git submodule update --init --recursive
 ```
+
+下载主题
+
+[Hugo cheatsheet](https://https://theoriz0.github.io/posts/my-hugo-cheatsheet/)

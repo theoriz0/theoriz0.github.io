@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on theoriz0&#39;s blog</title>
+    <link>https://theoriz0.github.io/posts/</link>
+    <description>Recent content in Posts on theoriz0&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 11 Jan 2023 22:32:58 +0800</lastBuildDate>
+    <atom:link href="https://theoriz0.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Golang WSL2 CentOS8 开发环境配置指南</title>
+      <link>https://theoriz0.github.io/posts/golang-wsl2-centos8-setup/</link>
+      <pubDate>Wed, 11 Jan 2023 22:32:58 +0800</pubDate>
+      <guid>https://theoriz0.github.io/posts/golang-wsl2-centos8-setup/</guid>
+      <description>获取 WSL CentOS8 mishamosher/CentOS-WSL
+安装并启动 CentOS8 解压并运行CentOS8.exe。
+Windows 命令行下运行：
+## 列出所有版本，确认 CentOS8 已安装成功 wsl --list ## 如果有多个发行版，可以将默认版本设为 CentOS8 wsl -s CentOS8 ## 启动。如果设置了默认版本，可以忽略 wsl -d CentOS8 设置 root 用户密码 passwd root 创建普通用户并加入sudo组 useradd [username] passwd [username] sed -i &amp;#39;/^root.*ALL=(ALL).*ALL/a\[username]\tALL=(ALL) \tALL&amp;#39; /etc/sudoers 替换 yum 源 mv /etc/yum.repos.d /etc/yum.repos.d.bak # 先备份原有的 Yum 源 mkdir /etc/yum.repos.d curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-vault-8.5.2111.repo yum clean all &amp;amp;&amp;amp; yum makecache 修改 WSL 默认用户 WSL 下：
+vi /etc/wsl.conf 文件内容为：</description>
+    </item>
+    <item>
+      <title>关于这个博客</title>
+      <link>https://theoriz0.github.io/posts/about-this-blog/</link>
+      <pubDate>Wed, 11 Jan 2023 22:16:45 +0800</pubDate>
+      <guid>https://theoriz0.github.io/posts/about-this-blog/</guid>
+      <description>说明 博客工具：Hugo
+主题：terminal</description>
+    </item>
+  </channel>
+</rss>
