@@ -5,9 +5,9 @@ draft: false
 ---
 
 https://www.bilibili.com/video/BV11H4y1R7Pm/
-我的加州立功教授告诉我60分更重要
+我的加州理工教授告诉我60分更重要
 硅谷有一句名言叫
-move fast and break since
+move fast and break things
 意思就是说要快速的行动
 即便事情会被搞砸
 每个人每天都有很多事情要执行
