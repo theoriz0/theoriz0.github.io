@@ -4,9 +4,9 @@ date = "2023-11-05T16:28:35+08:00"
 author = ""
 authorTwitter = "" #do not include @
 cover = ""
-tags = ["", ""]
+tags = ["私有云", ""]
 keywords = ["", ""]
-description = ""
+description = "自建云音乐 + Blog + Flomo + Dropbox"
 showFullContent = false
 readingTime = false
 hideComments = false
@@ -23,3 +23,6 @@ Hugo + github.io
 
 ## 类Twitter
 想用Mongo的 Data API免费额度 + Netlify的免费额度，部署一个极简的twitter。自己部署的最大优势是未来整理时可以直接操作数据库，比在WebUI里来回请求http会快很多。
+
+## Rclone + COS 同步盘
+通过Rclone + 对象存储实现同步盘。指令详见[Rclone](https://theoriz0.github.io/posts/my-rclone-cos)

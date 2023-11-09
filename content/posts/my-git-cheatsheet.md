@@ -4,14 +4,16 @@ date = "2023-11-05T16:45:52+08:00"
 author = ""
 authorTwitter = "" #do not include @
 cover = ""
-tags = ["", ""]
+tags = ["开发", "工具"]
 keywords = ["", ""]
-description = ""
+description = "常用 Git 命令"
 showFullContent = false
 readingTime = false
 hideComments = false
 color = "" #color from the theme settings
 +++
+
+## git stash
 
 git stash save "save message"  : 执行暂存
 （1）git stash save "save message"  : 执行存储时，添加备注，方便查找，只有git stash 也要可以的，但查找时不方便识别。
@@ -36,8 +38,9 @@ git checkout 不会清除不冲突的文件？
 如果要清除：git clean -xdf
 -n 不实际删除，只是进行演练，展示将要进行的操作，有哪些文件将要被删除。（可先使用该命令参数，然后再决定是否执行）
 
+## git reset
 git reset --hard HASH #返回到某个节点，不保留修改，已有的改动会丢失。
 git reset --soft HASH #返回到某个节点, 保留修改，已有的改动会保留，在未提交中，git status或git diff可看。
 
-submodule
+## submodule
 git clone --recurse-submodules, or run git submodule update --init --recursive

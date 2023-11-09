@@ -4,7 +4,9 @@ date: 2023-11-05T16:04:12+08:00
 draft: false
 ---
 
-https://www.bilibili.com/video/BV11H4y1R7Pm/
+来源：[Bilibili](https://www.bilibili.com/video/BV11H4y1R7Pm/)
+
+```
 我的加州理工教授告诉我60分更重要
 硅谷有一句名言叫
 move fast and break things
@@ -28,6 +30,7 @@ move fast and break things
 做一件100分事情的经历
 可以帮你完成5件60分的事情
 哪个对你帮助会更大呢
+```
 
 完美重要吗？比如这篇文章的markdown排版。
 事情很多的时候更要把精力集中在重要的事情上。

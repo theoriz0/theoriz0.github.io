@@ -23,3 +23,7 @@ hugo new posts/your-post.md
 
 hugo serve
 ```
+
+Hugo 图片
+
+存放在 content/images 下。markdown中引用时：```![](../../images/xxx.jpg)```
