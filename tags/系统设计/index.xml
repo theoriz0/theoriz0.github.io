@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>系统设计 on theoriz0's blog</title><link>https://theoriz0.github.io/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/</link><description>Recent content in 系统设计 on theoriz0's blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 09 Nov 2023 16:36:29 +0800</lastBuildDate><atom:link href="https://theoriz0.github.io/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/index.xml" rel="self" type="application/rss+xml"/><item><title>系统设计面试指南（EN）</title><link>https://theoriz0.github.io/posts/large-scale-system-design/</link><pubDate>Thu, 09 Nov 2023 16:36:29 +0800</pubDate><guid>https://theoriz0.github.io/posts/large-scale-system-design/</guid><description>How to design large-scale systems Step 1：Clarify the goals
+Make sure you understand the basic requirements and ask any clarifying questions.
+Step 2：Determine the scope
+Describe the feature set you&amp;rsquo;ll be discussing in the given solution, and define all of the features and their importance to the end goal.
+Step 3：Design for the right scale
+Determine the scale so you know whether the data can be supported by a single machine or if you need to scale.</description><content>&lt;h2 id="how-to-design-large-scale-systems">How to design large-scale systems&lt;/h2>
+&lt;p>Step 1：Clarify the goals&lt;/p>
+&lt;p>Make sure you understand the basic requirements and ask any clarifying questions.&lt;/p>
+&lt;p>Step 2：Determine the scope&lt;/p>
+&lt;p>Describe the feature set you&amp;rsquo;ll be discussing in the given solution, and define all of the features and their importance to the end goal.&lt;/p>
+&lt;p>Step 3：Design for the right scale&lt;/p>
+&lt;p>Determine the scale so you know whether the data can be supported by a single machine or if you need to scale.&lt;/p>
+&lt;p>Step 4:Start simple,then iterate&lt;/p>
+&lt;p>Describe the high-level process end-to-end based on your feature set and overall goals.This is a good time to discuss&lt;/p>
+&lt;p>Step 5：Consider relevant DSA&lt;/p>
+&lt;p>Determine which fundamental data structures and algorithms will help your system perform efficiently and appropriately.&lt;/p>
+&lt;p>Step 6:Describe trade-offs&lt;/p>
+&lt;p>Describe trade-offs while explaining your solution to show you understand large-scale systems and their complexities.&lt;/p>
+&lt;p>*Ask clarifying questions at each step of the process!&lt;/p>
+&lt;h2 id="distributed-system-fundamentals">Distributed system fundamentals&lt;/h2>
+&lt;p>Data durability and consistency 持久化与一致性&lt;/p>
+&lt;p>The differences and impacts of failure rates of storage solutions and corruption rates in read-write processes 读写过程中故障的概率与影响。&lt;/p>
+&lt;p>Replication 主备&lt;/p>
+&lt;p>Backing up data and repeating processes at scale 数据冗余与多进程集群&lt;/p>
+&lt;p>Consensus 持久化与一致性&lt;/p>
+&lt;p>Ensuring all nodes are in agreement,which prevents fault processes from running and ensures consistency and replication of data and processes&lt;/p>
+&lt;p>确保所有节点都成功执行，避免运行实例副本数据持久化失败&lt;/p>
+&lt;p>Partitioning 分区机制&lt;/p>
+&lt;p>Dividing data across different nodes within systems, which reduces reliance on pure replication （Vertical Shading &amp;amp; Horizontal Shading）&lt;/p>
+&lt;p>可以去数据进行水平分片，减少对副本的依赖&lt;/p>
+&lt;p>Distributed transactions 分布式事务&lt;/p>
+&lt;p>Once consensus is reached, transactions from applications need to be committed across databases with fault checks by each resource involved&lt;/p>
+&lt;p>为了达成一致，要协调多个数据库之间进行失败检测&lt;/p>
+&lt;p>Caching缓存&lt;/p>
+&lt;p>Making tradeoffs and caching decisions to determine what should be stored in a cache, how to direct traffic to a cache,and how to ensure we have the appropriate data in the cache&lt;/p>
+&lt;p>考虑是否需要引入缓存 包括确认哪些数据需要缓存&lt;/p>
+&lt;p>&lt;img src="../../images/system-design-cheat-sheet.png" alt="">&lt;/p></content></item></channel></rss>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>私有云 on theoriz0's blog</title><link>https://theoriz0.github.io/tags/%E7%A7%81%E6%9C%89%E4%BA%91/</link><description>Recent content in 私有云 on theoriz0's blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 09 Nov 2023 10:23:52 +0800</lastBuildDate><atom:link href="https://theoriz0.github.io/tags/%E7%A7%81%E6%9C%89%E4%BA%91/index.xml" rel="self" type="application/rss+xml"/><item><title>通过Rclone + 对象存储实现同步盘</title><link>https://theoriz0.github.io/posts/my-rclone-cos/</link><pubDate>Thu, 09 Nov 2023 10:23:52 +0800</pubDate><guid>https://theoriz0.github.io/posts/my-rclone-cos/</guid><description>下载安装 https://rclone.org/downloads/ s 如果需要挂载为磁盘，windows下需要安装winfsp：https://winfsp.dev/rel/
+配置cos： rclone config
+腾讯云： https://rclone.org/s3/#tencent-cos
+阿里云 https://rclone.org/s3/#alibaba-oss
+使用（假设配置将存储环境命名为cos）： 列出桶：rclone lsd cos
+本地同步COS：rclone sync local-folder cos:bucket-name/folder
+COS同步本地：rclone sync cos:bucket-name/folder local-folder
+同步前，建议使用 &amp;ndash;dry-run 参数，确认哪些文件将会被删除和下载，避免不必要的资源浪费。
+其他命令 rclone mkdir cos:rclone-test-1251668577，创建存储桶rclone-test-1251668577 rclone ls cos:rclone-test-1251668577，列出rclone-test-1251668577根目录下的文件 rclone copy local-folder/ cos:rclone-test-1251668577/，拷贝本地文件或目录到COS上，不会删除目的端的其他文件 rclone copy cos:rclone-test-1251668577 cos:rclone-test-backup-1251668577，同一个存储，在服务端使用copy操作拷贝文件 rclone sync local-folder/ cos:rclone-test-1251668577/ --backup-dir cos:rclone-test-backup-1251668577/20191011，将本地文件同步到cos，并备份被删除或修改的文件到备份存储桶中 rclone copy --max-age 24h --progress --no-traverse local-folder/ cos:rclone-test-1251668577/，--max-age 24h过滤出来最近24小时变更过的文件，--progress显示拷贝进度，--no-traverse在从源拷贝少量文件到目的中大量目的文件时，速度会更快 rclone check local-folder/ cos:rclone-test-1251668577/ --one-way，查看本地文件是否都同步到了目的端，默认校验修改时间和大小 rclone --min-size 500B lsl cos:rclone-test-1251668577/，查看存储桶中500B以上的文件列表 rclone --dry-run --min-size 300B delete cos:rclone-test-1251668577/，查看存储桶中500B以上的待删除文件列表 rclone delete oss:oss-test-bucket-1215715707/ --include=/stl-views.</description><content>&lt;h2 id="下载安装">下载安装&lt;/h2>
+&lt;p>&lt;a href="https://rclone.org/downloads/">https://rclone.org/downloads/&lt;/a>
+s
+如果需要挂载为磁盘，windows下需要安装winfsp：https://winfsp.dev/rel/&lt;/p>
+&lt;h2 id="配置cos">配置cos：&lt;/h2>
+&lt;p>rclone config&lt;/p>
+&lt;p>腾讯云：
+&lt;a href="https://rclone.org/s3/#tencent-cos">https://rclone.org/s3/#tencent-cos&lt;/a>&lt;/p>
+&lt;p>阿里云
+&lt;a href="https://rclone.org/s3/#alibaba-oss">https://rclone.org/s3/#alibaba-oss&lt;/a>&lt;/p>
+&lt;h2 id="使用假设配置将存储环境命名为cos">使用（假设配置将存储环境命名为cos）：&lt;/h2>
+&lt;p>列出桶：rclone lsd cos&lt;/p>
+&lt;p>本地同步COS：rclone sync local-folder cos:bucket-name/folder&lt;/p>
+&lt;p>COS同步本地：rclone sync cos:bucket-name/folder local-folder&lt;/p>
+&lt;p>同步前，建议使用 &amp;ndash;dry-run 参数，确认哪些文件将会被删除和下载，避免不必要的资源浪费。&lt;/p>
+&lt;h2 id="其他命令">其他命令&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>rclone mkdir cos:rclone-test-1251668577，创建存储桶rclone-test-1251668577
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>rclone ls cos:rclone-test-1251668577，列出rclone-test-1251668577根目录下的文件
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>rclone copy local-folder/ cos:rclone-test-1251668577/，拷贝本地文件或目录到COS上，不会删除目的端的其他文件
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>rclone copy cos:rclone-test-1251668577 cos:rclone-test-backup-1251668577，同一个存储，在服务端使用copy操作拷贝文件
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>rclone sync local-folder/ cos:rclone-test-1251668577/ --backup-dir cos:rclone-test-backup-1251668577/20191011，将本地文件同步到cos，并备份被删除或修改的文件到备份存储桶中
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>rclone copy --max-age 24h --progress --no-traverse local-folder/ cos:rclone-test-1251668577/，--max-age 24h过滤出来最近24小时变更过的文件，--progress显示拷贝进度，--no-traverse在从源拷贝少量文件到目的中大量目的文件时，速度会更快
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>rclone check local-folder/ cos:rclone-test-1251668577/ --one-way，查看本地文件是否都同步到了目的端，默认校验修改时间和大小
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>rclone --min-size 500B lsl cos:rclone-test-1251668577/，查看存储桶中500B以上的文件列表
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>rclone --dry-run --min-size 300B delete cos:rclone-test-1251668577/，查看存储桶中500B以上的待删除文件列表
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>rclone delete oss:oss-test-bucket-1215715707/ --include&lt;span style="color:#f92672">=&lt;/span>/stl-views.gdb，删除根目录下的stl-views.gdb文件，如果不带/前缀，则会删除所有stl-views.gdb文件
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>rclone size cos:rclone-test-1251668577/，查看存储桶中对象数目和占用的空间大小
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>rclone mount cos:rclone-test-1251668577/ rclone-mnt/，将cos挂载成一个本地文件系统
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>rclone ncdu cos:rclone-test-1251668577/，一个简易文本形式的文件浏览器，用于存储桶中的文件浏览、文件和文件夹删除等操作
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>rclone cat cos:rclone-test-1251668577/test.cpp --head 10，输出test.cpp的前10个字节
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>echo &lt;span style="color:#e6db74">&amp;#34;hello world&amp;#34;&lt;/span> |rclone rcat cos:rclone-test-1251668577/rcat.txt将标准输出复制到存储桶的rcat.txt文件中，会覆盖目标文件
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>rclone sync oss:oss-test-bucket-1215715707/ cos:rclone-test-1251668577/ -P，同步oss存储桶中的数据到cos存储桶中，-P选项显示进度
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>rclone check oss:oss-test-bucket-1215715707/ cos:rclone-test-1251668577/ -P，进行数据对比校验
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>rclone md5sum cos:rclone-test-1251668577/，为所有文件生成MD5值
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>rclone tree cos:rclone-test-1251668577/ -C -D，显示文本格式的目录树结构，-C选项带颜色显示，-D显示上次修改时间
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="参考资料">参考资料&lt;/h2>
+&lt;p>&lt;a href="https://cloud.tencent.com/developer/article/1520867">https://cloud.tencent.com/developer/article/1520867&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://rclone.org/">https://rclone.org/&lt;/a>&lt;/p></content></item><item><title>自有数据：我的私有云</title><link>https://theoriz0.github.io/posts/my-private-clouds/</link><pubDate>Sun, 05 Nov 2023 16:28:35 +0800</pubDate><guid>https://theoriz0.github.io/posts/my-private-clouds/</guid><description>音乐 很多歌音乐由于被屏蔽/版权/地域原因未上架，所以建了ampache。客户端使用的是 Amperfy。 这样只要买apple music一个会员就可以了，不必在QQ/网易/Spotify之间来回切。 用了vmiss香港节点，因为便宜带宽大、流量多。国内免费的服务器那点带宽带流媒体卡的让人怀疑人生。
+Blog Hugo + github.io
+类Twitter 想用Mongo的 Data API免费额度 + Netlify的免费额度，部署一个极简的twitter。自己部署的最大优势是未来整理时可以直接操作数据库，比在WebUI里来回请求http会快很多。
+Rclone + COS 同步盘 通过Rclone + 对象存储实现同步盘。指令详见Rclone</description><content>&lt;h2 id="音乐">音乐&lt;/h2>
+&lt;p>很多歌音乐由于被屏蔽/版权/地域原因未上架，所以建了ampache。客户端使用的是 Amperfy。
+这样只要买apple music一个会员就可以了，不必在QQ/网易/Spotify之间来回切。
+用了vmiss香港节点，因为便宜带宽大、流量多。国内免费的服务器那点带宽带流媒体卡的让人怀疑人生。&lt;/p>
+&lt;h2 id="blog">Blog&lt;/h2>
+&lt;p>Hugo + github.io&lt;/p>
+&lt;h2 id="类twitter">类Twitter&lt;/h2>
+&lt;p>想用Mongo的 Data API免费额度 + Netlify的免费额度，部署一个极简的twitter。自己部署的最大优势是未来整理时可以直接操作数据库，比在WebUI里来回请求http会快很多。&lt;/p>
+&lt;h2 id="rclone--cos-同步盘">Rclone + COS 同步盘&lt;/h2>
+&lt;p>通过Rclone + 对象存储实现同步盘。指令详见&lt;a href="https://theoriz0.github.io/posts/my-rclone-cos">Rclone&lt;/a>&lt;/p></content></item></channel></rss>
