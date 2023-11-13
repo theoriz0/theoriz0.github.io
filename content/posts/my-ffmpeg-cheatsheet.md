@@ -75,3 +75,8 @@ flv 提取mp3
 ```
 ffmpeg -i video.m4s -i audio.m4s -c:v copy -c:a copy output.mp4
 ```
+
+## yuv录屏
+```
+ffmpeg -f gdigrab -t 15 -framerate 30 -i desktop -pix_fmt yuv420p -vcodec rawvideo -s 1920x1080 -y output.yuv
+```
