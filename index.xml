@@ -400,6 +400,8 @@ ffmpeg -safe 0 -f concat -i list.txt -c copy output.mp4
 &lt;/code>&lt;/pre>&lt;p>flv 提取mp3&lt;/p>
 &lt;h2 id="merge-m4s-video-and-audio">merge m4s video and audio&lt;/h2>
 &lt;pre tabindex="0">&lt;code>ffmpeg -i video.m4s -i audio.m4s -c:v copy -c:a copy output.mp4
+&lt;/code>&lt;/pre>&lt;h2 id="yuv录屏">yuv录屏&lt;/h2>
+&lt;pre tabindex="0">&lt;code>ffmpeg -f gdigrab -t 15 -framerate 30 -i desktop -pix_fmt yuv420p -vcodec rawvideo -s 1920x1080 -y output.yuv
 &lt;/code>&lt;/pre></content></item><item><title>Golang WSL2 CentOS8 开发环境配置指南</title><link>https://theoriz0.github.io/posts/golang-wsl2-centos8-setup/</link><pubDate>Wed, 11 Jan 2023 22:32:58 +0800</pubDate><guid>https://theoriz0.github.io/posts/golang-wsl2-centos8-setup/</guid><description>获取 WSL CentOS8 mishamosher/CentOS-WSL
 安装并启动 CentOS8 解压并运行CentOS8.exe。
 Windows 命令行下运行：
