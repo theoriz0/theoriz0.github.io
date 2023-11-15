@@ -1,4 +1,18 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>theoriz0's blog</title><link>https://theoriz0.github.io/</link><description>Recent content on theoriz0's blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 09 Nov 2023 18:07:39 +0800</lastBuildDate><atom:link href="https://theoriz0.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Go Dep Management</title><link>https://theoriz0.github.io/posts/go-dep-management/</link><pubDate>Thu, 09 Nov 2023 18:07:39 +0800</pubDate><guid>https://theoriz0.github.io/posts/go-dep-management/</guid><description>Go Modules是Go 语言从 1.11 版本之后官方推出的版本管理工具。1.11+以后默认GO111MODULE=auto，只要当前目录在$GOPATH/src之外且该目录包含go.mod文件就会使用Go Modules。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>theoriz0's blog</title><link>https://theoriz0.github.io/</link><description>Recent content on theoriz0's blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 15 Nov 2023 22:31:19 +0800</lastBuildDate><atom:link href="https://theoriz0.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>yt-dlp常用命令</title><link>https://theoriz0.github.io/posts/yt-dlp/</link><pubDate>Wed, 15 Nov 2023 22:31:19 +0800</pubDate><guid>https://theoriz0.github.io/posts/yt-dlp/</guid><description>list all available formats yt-dlp -F [Link]
+download and merge files yt-dlp -f xx+xx [Link]
+with thumbnail yt-dlp -f xx+xx --write-thumbnail [Link]
+other thumbnail params --write-thumbnail Write thumbnail image to disk --no-write-thumbnail Do not write thumbnail image to disk (default) --write-all-thumbnails Write all thumbnail image formats to disk --list-thumbnails</description><content>&lt;h2 id="list-all-available-formats">list all available formats&lt;/h2>
+&lt;p>&lt;code>yt-dlp -F [Link]&lt;/code>&lt;/p>
+&lt;h2 id="download-and-merge-files">download and merge files&lt;/h2>
+&lt;p>&lt;code>yt-dlp -f xx+xx [Link]&lt;/code>&lt;/p>
+&lt;h2 id="with-thumbnail">with thumbnail&lt;/h2>
+&lt;p>&lt;code>yt-dlp -f xx+xx --write-thumbnail [Link]&lt;/code>&lt;/p>
+&lt;h2 id="other-thumbnail-params">other thumbnail params&lt;/h2>
+&lt;pre tabindex="0">&lt;code>--write-thumbnail Write thumbnail image to disk
+--no-write-thumbnail Do not write thumbnail image to disk (default)
+--write-all-thumbnails Write all thumbnail image formats to disk
+--list-thumbnails
+&lt;/code>&lt;/pre></content></item><item><title>Go Dep Management</title><link>https://theoriz0.github.io/posts/go-dep-management/</link><pubDate>Thu, 09 Nov 2023 18:07:39 +0800</pubDate><guid>https://theoriz0.github.io/posts/go-dep-management/</guid><description>Go Modules是Go 语言从 1.11 版本之后官方推出的版本管理工具。1.11+以后默认GO111MODULE=auto，只要当前目录在$GOPATH/src之外且该目录包含go.mod文件就会使用Go Modules。
 使用modules依赖管理后：
 不需要将代码再放入$GOPATH/src 对于已经转移的包，可以用replace在go.mod文件中替换，不需要修改代码 当modules 功能启用时，依赖包的存放位置为$GOPATH/pkg，允许同一个package多个版本并存，且多个项目可以共享缓存的 module。
 go.mod go mod命令 命令 说明 download download modules to local cache(下载依赖包到本地缓存) edit edit go.mod from tools or scripts (编辑go.mod) graph print module requirement graph (打印模块依赖图) init initialize new module in current directory (在当前目录初始化go.mod) tidy add missing and remove unused modules(拉取缺少的模块，移除不用的模块) vendor make vendored copy of dependencies(将依赖复制到vendor下) verify verify dependencies have expected content (验证依赖是否正确) why explain why packages or modules are needed(解释为什么需要依赖) 执行 go get命令，在下载依赖包的同时还可以指定依赖包的版本</description><content>&lt;p>&lt;code>Go Modules&lt;/code>是Go 语言从 1.11 版本之后官方推出的&lt;strong>版本管理&lt;/strong>工具。1.11+以后默认&lt;code>GO111MODULE=auto&lt;/code>，只要当前目录在&lt;code>$GOPATH/src&lt;/code>之外且该目录包含go.mod文件就会使用&lt;code>Go Modules&lt;/code>。&lt;/p>
