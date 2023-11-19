@@ -16,7 +16,8 @@ color = "" #color from the theme settings
 ## list all available formats
 `yt-dlp -F [Link]`
 
-## download and merge files
+## download (and merge) files
+`yt-dlp -f xx [Link]` 
 `yt-dlp -f xx+xx [Link]`
 
 ## with thumbnail

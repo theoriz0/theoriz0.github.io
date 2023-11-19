@@ -36,3 +36,7 @@ move fast and break things
 事情很多的时候更要把精力集中在重要的事情上。
 
 过早优化是万恶之源 —— 克努特优化原则。
+
+松弛 (Relaxation)：
+
+A relaxation is an approximation of a difficult problem by a nearby problem that is easier to solve. A solution of the relaxed problem provides information about the original problem. from [Wikipedia](https://en.wikipedia.org/wiki/Relaxation_(approximation))
