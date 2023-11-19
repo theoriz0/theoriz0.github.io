@@ -13,7 +13,7 @@ hideComments : false
 
 博客工具：[Hugo](https://gohugo.io)
 
-主题：[terminal](https://github.com/panr/hugo-theme-terminal)
+主题：~~[terminal](https://github.com/panr/hugo-theme-terminal)~~ [hugo-theme-stack](https://github.com/CaiJimmy/hugo-theme-stack)
 
 ## 如何使用
 
