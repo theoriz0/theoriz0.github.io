@@ -1,9 +1,6 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>开发环境 on theoriz0's blog</title><link>https://theoriz0.github.io/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</link><description>Recent content in 开发环境 on theoriz0's blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 11 Jan 2023 22:32:58 +0800</lastBuildDate><atom:link href="https://theoriz0.github.io/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/index.xml" rel="self" type="application/rss+xml"/><item><title>Golang WSL2 CentOS8 开发环境配置指南</title><link>https://theoriz0.github.io/posts/golang-wsl2-centos8-setup/</link><pubDate>Wed, 11 Jan 2023 22:32:58 +0800</pubDate><guid>https://theoriz0.github.io/posts/golang-wsl2-centos8-setup/</guid><description>获取 WSL CentOS8 mishamosher/CentOS-WSL
-安装并启动 CentOS8 解压并运行CentOS8.exe。
-Windows 命令行下运行：
-## 列出所有版本，确认 CentOS8 已安装成功 wsl --list ## 如果有多个发行版，可以将默认版本设为 CentOS8 wsl -s CentOS8 ## 启动。如果设置了默认版本，可以忽略 wsl -d CentOS8 设置 root 用户密码 passwd root 创建普通用户并加入sudo组 useradd [username] passwd [username] sed -i &amp;#39;/^root.*ALL=(ALL).*ALL/a\[username]\tALL=(ALL) \tALL&amp;#39; /etc/sudoers 替换 yum 源 mv /etc/yum.repos.d /etc/yum.repos.d.bak # 先备份原有的 Yum 源 mkdir /etc/yum.repos.d curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-vault-8.5.2111.repo yum clean all &amp;amp;&amp;amp; yum makecache 修改 WSL 默认用户 WSL 下：
-vi /etc/wsl.conf 文件内容为：</description><content>&lt;h2 id="获取-wsl-centos8">获取 WSL CentOS8&lt;/h2>
-&lt;p>&lt;a href="https://github.com/mishamosher/CentOS-WSL">mishamosher/CentOS-WSL&lt;/a>&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>开发环境 on theoriz0's blog</title><link>https://theoriz0.github.io/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</link><description>Recent content in 开发环境 on theoriz0's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 11 Jan 2023 22:32:58 +0800</lastBuildDate><atom:link href="https://theoriz0.github.io/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/index.xml" rel="self" type="application/rss+xml"/><item><title>Golang WSL2 CentOS8 开发环境配置指南</title><link>https://theoriz0.github.io/posts/golang-wsl2-centos8-setup/</link><pubDate>Wed, 11 Jan 2023 22:32:58 +0800</pubDate><guid>https://theoriz0.github.io/posts/golang-wsl2-centos8-setup/</guid><description>&lt;h2 id="获取-wsl-centos8">获取 WSL CentOS8&lt;/h2>
+&lt;p>&lt;a class="link" href="https://github.com/mishamosher/CentOS-WSL" target="_blank" rel="noopener"
+>mishamosher/CentOS-WSL&lt;/a>&lt;/p>
 &lt;h2 id="安装并启动-centos8">安装并启动 CentOS8&lt;/h2>
 &lt;p>解压并运行&lt;code>CentOS8.exe&lt;/code>。&lt;/p>
 &lt;p>Windows 命令行下运行：&lt;/p>
@@ -92,7 +89,8 @@ vi /etc/wsl.conf 文件内容为：</description><content>&lt;h2 id="获取-wsl-
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>alias proxy&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;source ~/proxy.sh&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>proxy set
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="配置clash或其他代理软件">配置clash或其他代理软件&lt;/h3>
-&lt;p>详细可参考：&lt;a href="https://www.cnblogs.com/tuilk/p/16287472.html">WSL2配置代理&lt;/a>&lt;/p>
+&lt;p>详细可参考：&lt;a class="link" href="https://www.cnblogs.com/tuilk/p/16287472.html" target="_blank" rel="noopener"
+>WSL2配置代理&lt;/a>&lt;/p>
 &lt;p>开启代理软件的【allow lan/局域网】功能。&lt;/p>
 &lt;p>WSL 下：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>export ALL_PROXY&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://{ip}:{port}&amp;#34;&lt;/span>
@@ -183,10 +181,12 @@ vi /etc/wsl.conf 文件内容为：</description><content>&lt;h2 id="获取-wsl-
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="安装go环境">安装go环境&lt;/h2>
 &lt;p>（如果不需要 go 环境，可删去 .bashrc 的 GO 部分）&lt;/p>
 &lt;p>确认.bashrc的$GOVERSION，如果安装不同版本，修改之。&lt;/p>
-&lt;p>按照go官网下载go。&lt;a href="https://go.dev/dl/">Go官网下载地址&lt;/a>&lt;/p>
+&lt;p>按照go官网下载go。&lt;a class="link" href="https://go.dev/dl/" target="_blank" rel="noopener"
+>Go官网下载地址&lt;/a>&lt;/p>
 &lt;p>解压:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>rm -rf /usr/local/go &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> tar -C /usr/local/go/$GOVERSION -xzf go1.19.4.linux-amd64.tar.gz
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>详见 &lt;a href="https://go.dev/doc/install">Go官网安装指南&lt;/a>。&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>详见 &lt;a class="link" href="https://go.dev/doc/install" target="_blank" rel="noopener"
+>Go官网安装指南&lt;/a>。&lt;/p>
 &lt;p>此时 go version应该能输出版本。&lt;/p>
 &lt;h3 id="安装protoc">安装protoc&lt;/h3>
 &lt;p>（最新版本在(github.com)[https://github.com/protocolbuffers/protobuf/releases)，可根据需要自行调整命令)&lt;/p>
@@ -221,13 +221,15 @@ vi /etc/wsl.conf 文件内容为：</description><content>&lt;h2 id="获取-wsl-
 &lt;/ul>
 &lt;p>如果报 &lt;code>Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock&lt;/code>，可运行以下语句设置权限：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo setfacl --modify user:&amp;lt;user name or ID&amp;gt;:rw /var/run/docker.sock
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>(来源：&lt;a href="https://stackoverflow.com/questions/51342810/how-to-fix-dial-unix-var-run-docker-sock-connect-permission-denied-when-gro">StackOverflow&lt;/a>)&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>(来源：&lt;a class="link" href="https://stackoverflow.com/questions/51342810/how-to-fix-dial-unix-var-run-docker-sock-connect-permission-denied-when-gro" target="_blank" rel="noopener"
+>StackOverflow&lt;/a>)&lt;/p>
 &lt;p>如果报&lt;code>failed to solve with frontend dockerfile.v0: failed to create LLB definition&lt;/code>，需在 docker desktop 中配置:&lt;/p>
 &lt;ul>
 &lt;li>docker engine: &lt;code>&amp;quot;features&amp;quot;: {&amp;quot;buildkit&amp;quot;: false },&lt;/code>&lt;/li>
 &lt;/ul>
 &lt;p>并重新用&lt;code>setfacl&lt;/code>设置权限&lt;/p>
-&lt;p>（来源：&lt;a href="https://blog.csdn.net/qq_41240287/article/details/125236997">CSDN&lt;/a>）&lt;/p>
+&lt;p>（来源：&lt;a class="link" href="https://blog.csdn.net/qq_41240287/article/details/125236997" target="_blank" rel="noopener"
+>CSDN&lt;/a>）&lt;/p>
 &lt;h2 id="创建默认-k8s-环境">创建默认 K8S 环境&lt;/h2>
 &lt;p>在 Docker Desktop 中设置：&lt;/p>
 &lt;ul>
@@ -258,4 +260,4 @@ vi /etc/wsl.conf 文件内容为：</description><content>&lt;h2 id="获取-wsl-
 &lt;p>不建议关闭，因为 proxy.sh 脚本通过读取该文件获取 WSL 下 Windows 的 host ip。&lt;/p>
 &lt;p>新建文件：/etc/wsl.conf，内容如下：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>[network]generateResolvConf = false
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></content></item></channel></rss>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>

@@ -1,9 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>后端 on theoriz0's blog</title><link>https://theoriz0.github.io/tags/%E5%90%8E%E7%AB%AF/</link><description>Recent content in 后端 on theoriz0's blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 09 Nov 2023 16:36:29 +0800</lastBuildDate><atom:link href="https://theoriz0.github.io/tags/%E5%90%8E%E7%AB%AF/index.xml" rel="self" type="application/rss+xml"/><item><title>系统设计面试指南（EN）</title><link>https://theoriz0.github.io/posts/large-scale-system-design/</link><pubDate>Thu, 09 Nov 2023 16:36:29 +0800</pubDate><guid>https://theoriz0.github.io/posts/large-scale-system-design/</guid><description>How to design large-scale systems Step 1：Clarify the goals
-Make sure you understand the basic requirements and ask any clarifying questions.
-Step 2：Determine the scope
-Describe the feature set you&amp;rsquo;ll be discussing in the given solution, and define all of the features and their importance to the end goal.
-Step 3：Design for the right scale
-Determine the scale so you know whether the data can be supported by a single machine or if you need to scale.</description><content>&lt;h2 id="how-to-design-large-scale-systems">How to design large-scale systems&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>后端 on theoriz0's blog</title><link>https://theoriz0.github.io/tags/%E5%90%8E%E7%AB%AF/</link><description>Recent content in 后端 on theoriz0's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 09 Nov 2023 16:36:29 +0800</lastBuildDate><atom:link href="https://theoriz0.github.io/tags/%E5%90%8E%E7%AB%AF/index.xml" rel="self" type="application/rss+xml"/><item><title>系统设计面试指南（EN）</title><link>https://theoriz0.github.io/posts/large-scale-system-design/</link><pubDate>Thu, 09 Nov 2023 16:36:29 +0800</pubDate><guid>https://theoriz0.github.io/posts/large-scale-system-design/</guid><description>&lt;h2 id="how-to-design-large-scale-systems">How to design large-scale systems&lt;/h2>
 &lt;p>Step 1：Clarify the goals&lt;/p>
 &lt;p>Make sure you understand the basic requirements and ask any clarifying questions.&lt;/p>
 &lt;p>Step 2：Determine the scope&lt;/p>
@@ -34,4 +29,6 @@ Determine the scale so you know whether the data can be supported by a single ma
 &lt;p>Caching缓存&lt;/p>
 &lt;p>Making tradeoffs and caching decisions to determine what should be stored in a cache, how to direct traffic to a cache,and how to ensure we have the appropriate data in the cache&lt;/p>
 &lt;p>考虑是否需要引入缓存 包括确认哪些数据需要缓存&lt;/p>
-&lt;p>&lt;img src="../../images/system-design-cheat-sheet.png" alt="">&lt;/p></content></item></channel></rss>
+&lt;p>&lt;img src="https://theoriz0.github.io/images/system-design-cheat-sheet.png"
+loading="lazy"
+>&lt;/p></description></item></channel></rss>

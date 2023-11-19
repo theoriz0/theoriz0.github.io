@@ -1,10 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on theoriz0's blog</title><link>https://theoriz0.github.io/posts/</link><description>Recent content in Posts on theoriz0's blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 15 Nov 2023 22:31:19 +0800</lastBuildDate><atom:link href="https://theoriz0.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>yt-dlp常用命令</title><link>https://theoriz0.github.io/posts/yt-dlp/</link><pubDate>Wed, 15 Nov 2023 22:31:19 +0800</pubDate><guid>https://theoriz0.github.io/posts/yt-dlp/</guid><description>list all available formats yt-dlp -F [Link]
-download and merge files yt-dlp -f xx+xx [Link]
-with thumbnail yt-dlp -f xx+xx --write-thumbnail [Link]
-other thumbnail params --write-thumbnail Write thumbnail image to disk --no-write-thumbnail Do not write thumbnail image to disk (default) --write-all-thumbnails Write all thumbnail image formats to disk --list-thumbnails</description><content>&lt;h2 id="list-all-available-formats">list all available formats&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on theoriz0's blog</title><link>https://theoriz0.github.io/posts/</link><description>Recent content in Posts on theoriz0's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 15 Nov 2023 22:31:19 +0800</lastBuildDate><atom:link href="https://theoriz0.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>yt-dlp常用命令</title><link>https://theoriz0.github.io/posts/yt-dlp/</link><pubDate>Wed, 15 Nov 2023 22:31:19 +0800</pubDate><guid>https://theoriz0.github.io/posts/yt-dlp/</guid><description>&lt;h2 id="list-all-available-formats">list all available formats&lt;/h2>
 &lt;p>&lt;code>yt-dlp -F [Link]&lt;/code>&lt;/p>
-&lt;h2 id="download-and-merge-files">download and merge files&lt;/h2>
-&lt;p>&lt;code>yt-dlp -f xx+xx [Link]&lt;/code>&lt;/p>
+&lt;h2 id="download-and-merge-files">download (and merge) files&lt;/h2>
+&lt;p>&lt;code>yt-dlp -f xx [Link]&lt;/code>
+&lt;code>yt-dlp -f xx+xx [Link]&lt;/code>&lt;/p>
 &lt;h2 id="with-thumbnail">with thumbnail&lt;/h2>
 &lt;p>&lt;code>yt-dlp -f xx+xx --write-thumbnail [Link]&lt;/code>&lt;/p>
 &lt;h2 id="other-thumbnail-params">other thumbnail params&lt;/h2>
@@ -12,15 +10,7 @@ other thumbnail params --write-thumbnail Write thumbnail image to disk --no-writ
 --no-write-thumbnail Do not write thumbnail image to disk (default)
 --write-all-thumbnails Write all thumbnail image formats to disk
 --list-thumbnails
-&lt;/code>&lt;/pre></content></item><item><title>Grep 命令检索代码</title><link>https://theoriz0.github.io/posts/grep-code-searching/</link><pubDate>Wed, 15 Nov 2023 11:59:46 +0800</pubDate><guid>https://theoriz0.github.io/posts/grep-code-searching/</guid><description>Grep 常用选项介绍 -r，递归查找
--n，搜索结果显示行号
--i，忽略大小写
--v，反向匹配
--w，匹配整个单词
--E，匹配扩展的正则表达式
--l，只打印匹配的文件名。
-递归查找并显示行号 grep -rn memcpy grep -rni memcpy #忽略大小写 限制文件类型或其它条件 grep -rn memcpy | grep -v .o.cmd #排除.txt文件 grep -rn memcpy | grep -Ev &amp;#39;\.txt\.md|\.log|\.yaml&amp;#39; #使用正则表达式排除多种类型 grep -rn --exclude=*.txt memcpy #不在.txt中搜索 grep -rn --include=*.go memcpy #只在.go中搜索 限制目录 grep -rn --exclude-dir=out memcpy grep -rn --exclude-dir=out --exclude-dir=doc memcpy 匹配整个单词 grep -rnw memcpy 如果想过滤zmemcpy或者memcpyl，但是想保留MCD_memcpy, memcpy_16，需要写正则表达式。
-查看查找结果的上下文 grep -rn -B 3 -A 2 MEMCPY #匹配的前三行+后两行 grep 配合 find find .</description><content>&lt;h2 id="grep-常用选项介绍">Grep 常用选项介绍&lt;/h2>
+&lt;/code>&lt;/pre></description></item><item><title>Grep 命令检索代码</title><link>https://theoriz0.github.io/posts/grep-code-searching/</link><pubDate>Wed, 15 Nov 2023 11:59:46 +0800</pubDate><guid>https://theoriz0.github.io/posts/grep-code-searching/</guid><description>&lt;h2 id="grep-常用选项介绍">Grep 常用选项介绍&lt;/h2>
 &lt;ul>
 &lt;li>
 &lt;p>&lt;code>-r&lt;/code>，递归查找&lt;/p>
@@ -64,11 +54,10 @@ other thumbnail params --write-thumbnail Write thumbnail image to disk --no-writ
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>find . -iname Makefile -o -iname *.inc -o -iname *.mk | xargs grep -rn CFLAGS
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>管道实现的是将前面的输出stdout作为后面的输入stdin，但是有些命令不接受管道的传递方式。例如：ls，这是为什么呢？因为有些命令希望管道传递过来的是参数，但是直接使用管道有时无法传递到命令的参数位。这时候就需要xargs，xargs实现的是将管道传递过来的stdin进行处理然后传递到命令的参数位置上。&lt;/p>
 &lt;h2 id="参考资料">参考资料&lt;/h2>
-&lt;p>&lt;a href="https://blog.csdn.net/guyongqiangx/article/details/70161189">使用grep搜索代码的几个示例&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://www.jianshu.com/p/676353506f0b">Linux那点事-xargs命令详解&lt;/a>&lt;/p></content></item><item><title>Go Dep Management</title><link>https://theoriz0.github.io/posts/go-dep-management/</link><pubDate>Thu, 09 Nov 2023 18:07:39 +0800</pubDate><guid>https://theoriz0.github.io/posts/go-dep-management/</guid><description>Go Modules是Go 语言从 1.11 版本之后官方推出的版本管理工具。1.11+以后默认GO111MODULE=auto，只要当前目录在$GOPATH/src之外且该目录包含go.mod文件就会使用Go Modules。
-使用modules依赖管理后：
-不需要将代码再放入$GOPATH/src 对于已经转移的包，可以用replace在go.mod文件中替换，不需要修改代码 当modules 功能启用时，依赖包的存放位置为$GOPATH/pkg，允许同一个package多个版本并存，且多个项目可以共享缓存的 module。
-go.mod go mod命令 命令 说明 download download modules to local cache(下载依赖包到本地缓存) edit edit go.mod from tools or scripts (编辑go.mod) graph print module requirement graph (打印模块依赖图) init initialize new module in current directory (在当前目录初始化go.mod) tidy add missing and remove unused modules(拉取缺少的模块，移除不用的模块) vendor make vendored copy of dependencies(将依赖复制到vendor下) verify verify dependencies have expected content (验证依赖是否正确) why explain why packages or modules are needed(解释为什么需要依赖) 执行 go get命令，在下载依赖包的同时还可以指定依赖包的版本</description><content>&lt;p>&lt;code>Go Modules&lt;/code>是Go 语言从 1.11 版本之后官方推出的&lt;strong>版本管理&lt;/strong>工具。1.11+以后默认&lt;code>GO111MODULE=auto&lt;/code>，只要当前目录在&lt;code>$GOPATH/src&lt;/code>之外且该目录包含go.mod文件就会使用&lt;code>Go Modules&lt;/code>。&lt;/p>
+&lt;p>&lt;a class="link" href="https://blog.csdn.net/guyongqiangx/article/details/70161189" target="_blank" rel="noopener"
+>使用grep搜索代码的几个示例&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://www.jianshu.com/p/676353506f0b" target="_blank" rel="noopener"
+>Linux那点事-xargs命令详解&lt;/a>&lt;/p></description></item><item><title>Go Dep Management</title><link>https://theoriz0.github.io/posts/go-dep-management/</link><pubDate>Thu, 09 Nov 2023 18:07:39 +0800</pubDate><guid>https://theoriz0.github.io/posts/go-dep-management/</guid><description>&lt;p>&lt;code>Go Modules&lt;/code>是Go 语言从 1.11 版本之后官方推出的&lt;strong>版本管理&lt;/strong>工具。1.11+以后默认&lt;code>GO111MODULE=auto&lt;/code>，只要当前目录在&lt;code>$GOPATH/src&lt;/code>之外且该目录包含go.mod文件就会使用&lt;code>Go Modules&lt;/code>。&lt;/p>
 &lt;p>使用modules依赖管理后：&lt;/p>
 &lt;ul>
 &lt;li>不需要将代码再放入$GOPATH/src&lt;/li>
@@ -169,7 +158,9 @@ v当前版本+1-commit日期-commitID&lt;/p>
 &lt;p>如果项目打了 tag，但是没有用到 go module，为了跟用了 go module 的项目相区别，需要加个 &lt;code>+incompatible&lt;/code> 的标志。&lt;/p>
 &lt;p>比如 &lt;code>github.com/google/martian v2.1.0+incompatible/go.mod h1:9I4somxYTbIHy5NJKHRl3wXiIaQGbYVAs8BPL6v8lEs=&lt;/code>&lt;/p>
 &lt;p>三、项目用的 go module 版本是不是 v2+？&lt;/p>
-&lt;p>关于 go module v2+ 的特性，可以参考 Go 的官方文档：&lt;a href="https://link.juejin.cn/?target=https%3A%2F%2Fblog.golang.org%2Fv2-go-modules" title="https://link.juejin.cn?target=https%3A%2F%2Fblog.golang.org%2Fv2-go-modules">blog.golang.org/v2-go&amp;hellip;&lt;/a>。简单而言，就是通过让依赖路径带版本号后缀来区分同一个项目里不同版本的依赖，类似于 &lt;code>gopkg.in/xxx.v2&lt;/code> 的效果。&lt;/p>
+&lt;p>关于 go module v2+ 的特性，可以参考 Go 的官方文档：&lt;a class="link" href="https://link.juejin.cn/?target=https%3A%2F%2Fblog.golang.org%2Fv2-go-modules" title="https://link.juejin.cn?target=https%3A%2F%2Fblog.golang.org%2Fv2-go-modules"
+target="_blank" rel="noopener"
+>blog.golang.org/v2-go&amp;hellip;&lt;/a>。简单而言，就是通过让依赖路径带版本号后缀来区分同一个项目里不同版本的依赖，类似于 &lt;code>gopkg.in/xxx.v2&lt;/code> 的效果。&lt;/p>
 &lt;p>对于使用了 v2+ go module 的项目，项目路径会有个版本号的后缀。&lt;/p>
 &lt;p>比如 &lt;code>github.com/googleapis/gax-go/v2 v2.0.5 h1:sjZBwGj9Jlw33ImPtvFviGYvseOtDM7hkSKB7+Tv3SM=&lt;/code>&lt;/p>
 &lt;h2 id="gowork">go.work&lt;/h2>
@@ -206,15 +197,10 @@ github.com/link1st/example =&amp;gt; ./example1
 &lt;/code>&lt;/pre>&lt;p>在代码构建时，使用的是go.work指定的example1仓库代码，go.work优先级别更高&lt;/p>
 &lt;p>使用go.work时，不同的项目文件必须在有同一个根目录， 推荐在&lt;code>$GOPATH&lt;/code>路径下执行，生成go.work文件&lt;/p>
 &lt;h2 id="参考文档">参考文档&lt;/h2>
-&lt;p>&lt;a href="https://juejin.cn/post/7182091980099289147">掘金文章&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://learnku.com/docs/go-mod/1.17">Go Modules官方文档&lt;/a>&lt;/p></content></item><item><title>My Docker Cheatsheet</title><link>https://theoriz0.github.io/posts/my-docker-cheatsheet/</link><pubDate>Thu, 09 Nov 2023 17:19:34 +0800</pubDate><guid>https://theoriz0.github.io/posts/my-docker-cheatsheet/</guid><description>mysql 安装
-docker run --name some-mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:latest #tag 见docker hub docker exec -ti some-mysql /bin/bash ## 进入docker镜像 mysql -u root -p 允许任何客户端连接
-ALTER USER &amp;#39;root&amp;#39;@&amp;#39;%&amp;#39; IDENTIFIED WITH mysql_native_password BY &amp;#39;123456&amp;#39;; 参考：
-redis
-docker run -p 6379:6379 --name myredis -d redis:7.0.12 --requirepass my-secret-pw wsl下，会遇到提示port already in use，而并不能查到端口被占用，可以将外部端口改为16379。
-查看windows端口占用范围 来源：
-netsh interface ipv4 show excludedportrange protocol=tcp 进入redis
-docker exec -it myredis bash redis-cli auth my-secret-pw 自动重启 docker run --restart-always</description><content>&lt;h2 id="mysql">mysql&lt;/h2>
+&lt;p>&lt;a class="link" href="https://juejin.cn/post/7182091980099289147" target="_blank" rel="noopener"
+>掘金文章&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://learnku.com/docs/go-mod/1.17" target="_blank" rel="noopener"
+>Go Modules官方文档&lt;/a>&lt;/p></description></item><item><title>My Docker Cheatsheet</title><link>https://theoriz0.github.io/posts/my-docker-cheatsheet/</link><pubDate>Thu, 09 Nov 2023 17:19:34 +0800</pubDate><guid>https://theoriz0.github.io/posts/my-docker-cheatsheet/</guid><description>&lt;h2 id="mysql">mysql&lt;/h2>
 &lt;p>安装&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>docker run --name some-mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD&lt;span style="color:#f92672">=&lt;/span>my-secret-pw -d mysql:latest &lt;span style="color:#75715e">#tag 见docker hub&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>docker exec -ti some-mysql /bin/bash &lt;span style="color:#75715e">## 进入docker镜像&lt;/span>
@@ -222,12 +208,15 @@ docker exec -it myredis bash redis-cli auth my-secret-pw 自动重启 docker run
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>允许任何客户端连接&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">ALTER&lt;/span> &lt;span style="color:#66d9ef">USER&lt;/span> &lt;span style="color:#e6db74">&amp;#39;root&amp;#39;&lt;/span>&lt;span style="color:#f92672">@&lt;/span>&lt;span style="color:#e6db74">&amp;#39;%&amp;#39;&lt;/span> IDENTIFIED &lt;span style="color:#66d9ef">WITH&lt;/span> mysql_native_password &lt;span style="color:#66d9ef">BY&lt;/span> &lt;span style="color:#e6db74">&amp;#39;123456&amp;#39;&lt;/span>;
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>参考：&lt;/p>
-&lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/158063202">&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://hub.docker.com/_/mysql/">&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://zhuanlan.zhihu.com/p/158063202" target="_blank" rel="noopener"
+>&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://hub.docker.com/_/mysql/" target="_blank" rel="noopener"
+>&lt;/a>&lt;/p>
 &lt;p>redis&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>docker run -p 6379:6379 --name myredis -d redis:7.0.12 --requirepass my-secret-pw
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>wsl下，会遇到提示port already in use，而并不能查到端口被占用，可以将外部端口改为16379。&lt;/p>
-&lt;p>查看windows端口占用范围 &lt;a href="https://cloud.tencent.com/developer/article/2006079">来源&lt;/a>：&lt;/p>
+&lt;p>查看windows端口占用范围 &lt;a class="link" href="https://cloud.tencent.com/developer/article/2006079" target="_blank" rel="noopener"
+>来源&lt;/a>：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>netsh interface ipv4 show excludedportrange protocol&lt;span style="color:#f92672">=&lt;/span>tcp
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>进入redis&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>docker exec -it myredis bash
@@ -239,17 +228,13 @@ docker exec -it myredis bash redis-cli auth my-secret-pw 自动重启 docker run
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>docker logs myredis &lt;span style="color:#75715e"># 后面跟容器名 or 容器ID 都可以&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>docker logs --since 30m &amp;lt;容器名&amp;gt; &lt;span style="color:#75715e"># --since 30m 是查看此容器30分钟之内的日志情况。&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="docker性能损失">Docker性能损失&lt;/h2>
-&lt;p>&lt;a href="https://www.v2ex.com/t/394313">V2EX讨论&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://www.v2ex.com/t/394313" target="_blank" rel="noopener"
+>V2EX讨论&lt;/a>&lt;/p>
 &lt;blockquote>
 &lt;p>CPU 基本不会有损失。&lt;/p>
 &lt;p>损失只出现在 I/O 上，包括网络 I/O 和文件系统 I/O。这两者就要看不同的实现了。&lt;/p>
 &lt;p>&amp;hellip;&amp;hellip;但是对于 99% 的应用程序来说，根本不需要考虑这个损失……&lt;/p>
-&lt;/blockquote></content></item><item><title>系统设计面试指南（EN）</title><link>https://theoriz0.github.io/posts/large-scale-system-design/</link><pubDate>Thu, 09 Nov 2023 16:36:29 +0800</pubDate><guid>https://theoriz0.github.io/posts/large-scale-system-design/</guid><description>How to design large-scale systems Step 1：Clarify the goals
-Make sure you understand the basic requirements and ask any clarifying questions.
-Step 2：Determine the scope
-Describe the feature set you&amp;rsquo;ll be discussing in the given solution, and define all of the features and their importance to the end goal.
-Step 3：Design for the right scale
-Determine the scale so you know whether the data can be supported by a single machine or if you need to scale.</description><content>&lt;h2 id="how-to-design-large-scale-systems">How to design large-scale systems&lt;/h2>
+&lt;/blockquote></description></item><item><title>系统设计面试指南（EN）</title><link>https://theoriz0.github.io/posts/large-scale-system-design/</link><pubDate>Thu, 09 Nov 2023 16:36:29 +0800</pubDate><guid>https://theoriz0.github.io/posts/large-scale-system-design/</guid><description>&lt;h2 id="how-to-design-large-scale-systems">How to design large-scale systems&lt;/h2>
 &lt;p>Step 1：Clarify the goals&lt;/p>
 &lt;p>Make sure you understand the basic requirements and ask any clarifying questions.&lt;/p>
 &lt;p>Step 2：Determine the scope&lt;/p>
@@ -280,24 +265,21 @@ Determine the scale so you know whether the data can be supported by a single ma
 &lt;p>Caching缓存&lt;/p>
 &lt;p>Making tradeoffs and caching decisions to determine what should be stored in a cache, how to direct traffic to a cache,and how to ensure we have the appropriate data in the cache&lt;/p>
 &lt;p>考虑是否需要引入缓存 包括确认哪些数据需要缓存&lt;/p>
-&lt;p>&lt;img src="../../images/system-design-cheat-sheet.png" alt="">&lt;/p></content></item><item><title>通过Rclone + 对象存储实现同步盘</title><link>https://theoriz0.github.io/posts/my-rclone-cos/</link><pubDate>Thu, 09 Nov 2023 10:23:52 +0800</pubDate><guid>https://theoriz0.github.io/posts/my-rclone-cos/</guid><description>下载安装 https://rclone.org/downloads/ s 如果需要挂载为磁盘，windows下需要安装winfsp：https://winfsp.dev/rel/
-配置cos： rclone config
-腾讯云： https://rclone.org/s3/#tencent-cos
-阿里云 https://rclone.org/s3/#alibaba-oss
-使用（假设配置将存储环境命名为cos）： 列出桶：rclone lsd cos
-本地同步COS：rclone sync local-folder cos:bucket-name/folder
-COS同步本地：rclone sync cos:bucket-name/folder local-folder
-同步前，建议使用 &amp;ndash;dry-run 参数，确认哪些文件将会被删除和下载，避免不必要的资源浪费。
-其他命令 rclone mkdir cos:rclone-test-1251668577，创建存储桶rclone-test-1251668577 rclone ls cos:rclone-test-1251668577，列出rclone-test-1251668577根目录下的文件 rclone copy local-folder/ cos:rclone-test-1251668577/，拷贝本地文件或目录到COS上，不会删除目的端的其他文件 rclone copy cos:rclone-test-1251668577 cos:rclone-test-backup-1251668577，同一个存储，在服务端使用copy操作拷贝文件 rclone sync local-folder/ cos:rclone-test-1251668577/ --backup-dir cos:rclone-test-backup-1251668577/20191011，将本地文件同步到cos，并备份被删除或修改的文件到备份存储桶中 rclone copy --max-age 24h --progress --no-traverse local-folder/ cos:rclone-test-1251668577/，--max-age 24h过滤出来最近24小时变更过的文件，--progress显示拷贝进度，--no-traverse在从源拷贝少量文件到目的中大量目的文件时，速度会更快 rclone check local-folder/ cos:rclone-test-1251668577/ --one-way，查看本地文件是否都同步到了目的端，默认校验修改时间和大小 rclone --min-size 500B lsl cos:rclone-test-1251668577/，查看存储桶中500B以上的文件列表 rclone --dry-run --min-size 300B delete cos:rclone-test-1251668577/，查看存储桶中500B以上的待删除文件列表 rclone delete oss:oss-test-bucket-1215715707/ --include=/stl-views.</description><content>&lt;h2 id="下载安装">下载安装&lt;/h2>
-&lt;p>&lt;a href="https://rclone.org/downloads/">https://rclone.org/downloads/&lt;/a>
+&lt;p>&lt;img src="https://theoriz0.github.io/images/system-design-cheat-sheet.png"
+loading="lazy"
+>&lt;/p></description></item><item><title>通过Rclone + 对象存储实现同步盘</title><link>https://theoriz0.github.io/posts/my-rclone-cos/</link><pubDate>Thu, 09 Nov 2023 10:23:52 +0800</pubDate><guid>https://theoriz0.github.io/posts/my-rclone-cos/</guid><description>&lt;h2 id="下载安装">下载安装&lt;/h2>
+&lt;p>&lt;a class="link" href="https://rclone.org/downloads/" target="_blank" rel="noopener"
+>https://rclone.org/downloads/&lt;/a>
 s
 如果需要挂载为磁盘，windows下需要安装winfsp：https://winfsp.dev/rel/&lt;/p>
 &lt;h2 id="配置cos">配置cos：&lt;/h2>
 &lt;p>rclone config&lt;/p>
 &lt;p>腾讯云：
-&lt;a href="https://rclone.org/s3/#tencent-cos">https://rclone.org/s3/#tencent-cos&lt;/a>&lt;/p>
+&lt;a class="link" href="https://rclone.org/s3/#tencent-cos" target="_blank" rel="noopener"
+>https://rclone.org/s3/#tencent-cos&lt;/a>&lt;/p>
 &lt;p>阿里云
-&lt;a href="https://rclone.org/s3/#alibaba-oss">https://rclone.org/s3/#alibaba-oss&lt;/a>&lt;/p>
+&lt;a class="link" href="https://rclone.org/s3/#alibaba-oss" target="_blank" rel="noopener"
+>https://rclone.org/s3/#alibaba-oss&lt;/a>&lt;/p>
 &lt;h2 id="使用假设配置将存储环境命名为cos">使用（假设配置将存储环境命名为cos）：&lt;/h2>
 &lt;p>列出桶：rclone lsd cos&lt;/p>
 &lt;p>本地同步COS：rclone sync local-folder cos:bucket-name/folder&lt;/p>
@@ -324,14 +306,10 @@ s
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>rclone md5sum cos:rclone-test-1251668577/，为所有文件生成MD5值
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>rclone tree cos:rclone-test-1251668577/ -C -D，显示文本格式的目录树结构，-C选项带颜色显示，-D显示上次修改时间
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="参考资料">参考资料&lt;/h2>
-&lt;p>&lt;a href="https://cloud.tencent.com/developer/article/1520867">https://cloud.tencent.com/developer/article/1520867&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://rclone.org/">https://rclone.org/&lt;/a>&lt;/p></content></item><item><title>My Git Cheatsheet</title><link>https://theoriz0.github.io/posts/my-git-cheatsheet/</link><pubDate>Sun, 05 Nov 2023 16:45:52 +0800</pubDate><guid>https://theoriz0.github.io/posts/my-git-cheatsheet/</guid><description>git stash git stash save &amp;ldquo;save message&amp;rdquo; : 执行暂存 （1）git stash save &amp;ldquo;save message&amp;rdquo; : 执行存储时，添加备注，方便查找，只有git stash 也要可以的，但查找时不方便识别。
-（2）git stash list ：查看stash了哪些存储
-（3）git stash show ：显示做了哪些改动，默认show第一个存储,如果要显示其他存贮，后面加stash@{$num}，比如第二个 git stash show stash@{1}
-（4）git stash show -p : 显示第一个存储的改动，如果想显示其他存存储，命令：git stash show stash@{$num} -p ，比如第二个：git stash show stash@{1} -p
-（5）git stash apply :应用某个存储,但不会把存储从存储列表中删除，默认使用第一个存储,即stash@{0}，如果要使用其他个，git stash apply stash@{$num} ， 比如第二个：git stash apply stash@{1}
-（6）git stash pop ：命令恢复之前缓存的工作目录，将缓存堆栈中的对应stash删除，并将对应修改应用到当前的工作目录下,默认为第一个stash,即stash@{0}，如果要应用并删除其他stash，命令：git stash pop stash@{$num} ，比如应用并删除第二个：git stash pop stash@{1}
-（7）git stash drop stash@{$num} ：丢弃stash@{$num}存储，从列表中删除这个存储</description><content>&lt;h2 id="git-stash">git stash&lt;/h2>
+&lt;p>&lt;a class="link" href="https://cloud.tencent.com/developer/article/1520867" target="_blank" rel="noopener"
+>https://cloud.tencent.com/developer/article/1520867&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://rclone.org/" target="_blank" rel="noopener"
+>https://rclone.org/&lt;/a>&lt;/p></description></item><item><title>My Git Cheatsheet</title><link>https://theoriz0.github.io/posts/my-git-cheatsheet/</link><pubDate>Sun, 05 Nov 2023 16:45:52 +0800</pubDate><guid>https://theoriz0.github.io/posts/my-git-cheatsheet/</guid><description>&lt;h2 id="git-stash">git stash&lt;/h2>
 &lt;p>git stash save &amp;ldquo;save message&amp;rdquo; : 执行暂存
 （1）git stash save &amp;ldquo;save message&amp;rdquo; : 执行存储时，添加备注，方便查找，只有git stash 也要可以的，但查找时不方便识别。&lt;/p>
 &lt;p>（2）git stash list ：查看stash了哪些存储&lt;/p>
@@ -349,21 +327,19 @@ s
 &lt;p>git reset &amp;ndash;hard HASH #返回到某个节点，不保留修改，已有的改动会丢失。
 git reset &amp;ndash;soft HASH #返回到某个节点, 保留修改，已有的改动会保留，在未提交中，git status或git diff可看。&lt;/p>
 &lt;h2 id="submodule">submodule&lt;/h2>
-&lt;p>git clone &amp;ndash;recurse-submodules, or run git submodule update &amp;ndash;init &amp;ndash;recursive&lt;/p></content></item><item><title>常用的一些应用</title><link>https://theoriz0.github.io/posts/my-tool-apps/</link><pubDate>Sun, 05 Nov 2023 16:35:24 +0800</pubDate><guid>https://theoriz0.github.io/posts/my-tool-apps/</guid><description>语音转文字 讯飞：准确度略高，通过声纹可以区分说话人，贵。重要音频可以用。 Whisper：开源，免费，无法区分说话人。 Win客户端 | 对应模型（作者推荐 ggml-medium.bin） Python环境可以使用WhisperX
-OCR 白描：
-图表绘制 Markdown + Mermaid，画时序图很方表。 流程图：Draw.io
-多媒体 ffmpeg： 其实对于个人来说（至少对我），最常用的不是转码，甚至说反而是不去转码，而是无损的包装格式转换，音频抽取，剪切，合并。
-多端同步 Feem Bark
-字典 汉语：新华字典、现代汉语词典、辞海 日语：新明解 英语：LDOCE 6 以及iOS、MacOS自带的字典们（无法从苹果全家桶抽身的重要原因）。
-浏览器插件 Mark 还没用，未来可能会尝试： (Rustdesk)[https://rustdesk.com/index.html]：开源自建Teamviewer。</description><content>&lt;h2 id="语音转文字">语音转文字&lt;/h2>
+&lt;p>git clone &amp;ndash;recurse-submodules, or run git submodule update &amp;ndash;init &amp;ndash;recursive&lt;/p></description></item><item><title>常用的一些应用</title><link>https://theoriz0.github.io/posts/my-tool-apps/</link><pubDate>Sun, 05 Nov 2023 16:35:24 +0800</pubDate><guid>https://theoriz0.github.io/posts/my-tool-apps/</guid><description>&lt;h2 id="语音转文字">语音转文字&lt;/h2>
 &lt;p>讯飞：准确度略高，通过声纹可以区分说话人，贵。重要音频可以用。
 Whisper：开源，免费，无法区分说话人。
-&lt;a href="https://github.com/Const-me/Whisper">Win客户端&lt;/a> | &lt;a href="https://huggingface.co/ggerganov/whisper.cpp/tree/main">对应模型&lt;/a>（作者推荐 ggml-medium.bin）
-Python环境可以使用&lt;a href="https://github.com/m-bain/whisperX">WhisperX&lt;/a>&lt;/p>
+&lt;a class="link" href="https://github.com/Const-me/Whisper" target="_blank" rel="noopener"
+>Win客户端&lt;/a> | &lt;a class="link" href="https://huggingface.co/ggerganov/whisper.cpp/tree/main" target="_blank" rel="noopener"
+>对应模型&lt;/a>（作者推荐 ggml-medium.bin）
+Python环境可以使用&lt;a class="link" href="https://github.com/m-bain/whisperX" target="_blank" rel="noopener"
+>WhisperX&lt;/a>&lt;/p>
 &lt;h2 id="ocr">OCR&lt;/h2>
 &lt;p>白描：&lt;/p>
 &lt;h2 id="图表绘制">图表绘制&lt;/h2>
-&lt;p>Markdown + &lt;a href="https://mermaid.js.org/intro/">Mermaid&lt;/a>，画时序图很方表。
+&lt;p>Markdown + &lt;a class="link" href="https://mermaid.js.org/intro/" target="_blank" rel="noopener"
+>Mermaid&lt;/a>，画时序图很方表。
 流程图：Draw.io&lt;/p>
 &lt;h2 id="多媒体">多媒体&lt;/h2>
 &lt;p>ffmpeg：
@@ -379,10 +355,7 @@ Bark&lt;/p>
 &lt;h2 id="浏览器插件">浏览器插件&lt;/h2>
 &lt;h2 id="mark">Mark&lt;/h2>
 &lt;p>还没用，未来可能会尝试：
-(Rustdesk)[https://rustdesk.com/index.html]：开源自建Teamviewer。&lt;/p></content></item><item><title>自有数据：我的私有云</title><link>https://theoriz0.github.io/posts/my-private-clouds/</link><pubDate>Sun, 05 Nov 2023 16:28:35 +0800</pubDate><guid>https://theoriz0.github.io/posts/my-private-clouds/</guid><description>音乐 很多歌音乐由于被屏蔽/版权/地域原因未上架，所以建了ampache。客户端使用的是 Amperfy。 这样只要买apple music一个会员就可以了，不必在QQ/网易/Spotify之间来回切。 用了vmiss香港节点，因为便宜带宽大、流量多。国内免费的服务器那点带宽带流媒体卡的让人怀疑人生。
-Blog Hugo + github.io
-类Twitter 想用Mongo的 Data API免费额度 + Netlify的免费额度，部署一个极简的twitter。自己部署的最大优势是未来整理时可以直接操作数据库，比在WebUI里来回请求http会快很多。
-Rclone + COS 同步盘 通过Rclone + 对象存储实现同步盘。指令详见Rclone</description><content>&lt;h2 id="音乐">音乐&lt;/h2>
+(Rustdesk)[https://rustdesk.com/index.html]：开源自建Teamviewer。&lt;/p></description></item><item><title>自有数据：我的私有云</title><link>https://theoriz0.github.io/posts/my-private-clouds/</link><pubDate>Sun, 05 Nov 2023 16:28:35 +0800</pubDate><guid>https://theoriz0.github.io/posts/my-private-clouds/</guid><description>&lt;h2 id="音乐">音乐&lt;/h2>
 &lt;p>很多歌音乐由于被屏蔽/版权/地域原因未上架，所以建了ampache。客户端使用的是 Amperfy。
 这样只要买apple music一个会员就可以了，不必在QQ/网易/Spotify之间来回切。
 用了vmiss香港节点，因为便宜带宽大、流量多。国内免费的服务器那点带宽带流媒体卡的让人怀疑人生。&lt;/p>
@@ -391,13 +364,10 @@ Rclone + COS 同步盘 通过Rclone + 对象存储实现同步盘。指令详见
 &lt;h2 id="类twitter">类Twitter&lt;/h2>
 &lt;p>想用Mongo的 Data API免费额度 + Netlify的免费额度，部署一个极简的twitter。自己部署的最大优势是未来整理时可以直接操作数据库，比在WebUI里来回请求http会快很多。&lt;/p>
 &lt;h2 id="rclone--cos-同步盘">Rclone + COS 同步盘&lt;/h2>
-&lt;p>通过Rclone + 对象存储实现同步盘。指令详见&lt;a href="https://theoriz0.github.io/posts/my-rclone-cos">Rclone&lt;/a>&lt;/p></content></item><item><title>My Hugo Cheatsheet</title><link>https://theoriz0.github.io/posts/my-hugo-cheatsheet/</link><pubDate>Sun, 05 Nov 2023 16:09:58 +0800</pubDate><guid>https://theoriz0.github.io/posts/my-hugo-cheatsheet/</guid><description>安装 Hugo：
-Hugo - Install
-go install -tags extended github.com/gohugoio/hugo@latest Mac 也可以使用Brew，省去配置
-brew install hugo 使用 Hugo
-hugo new posts/your-post.md hugo serve Hugo 图片
-存放在 content/images 下。markdown中引用时：![](../../images/xxx.jpg)</description><content>&lt;p>安装 Hugo：&lt;/p>
-&lt;p>&lt;a href="https://gohugo.io/installation/">Hugo - Install&lt;/a>&lt;/p>
+&lt;p>通过Rclone + 对象存储实现同步盘。指令详见&lt;a class="link" href="https://theoriz0.github.io/posts/my-rclone-cos" target="_blank" rel="noopener"
+>Rclone&lt;/a>&lt;/p></description></item><item><title>My Hugo Cheatsheet</title><link>https://theoriz0.github.io/posts/my-hugo-cheatsheet/</link><pubDate>Sun, 05 Nov 2023 16:09:58 +0800</pubDate><guid>https://theoriz0.github.io/posts/my-hugo-cheatsheet/</guid><description>&lt;p>安装 Hugo：&lt;/p>
+&lt;p>&lt;a class="link" href="https://gohugo.io/installation/" target="_blank" rel="noopener"
+>Hugo - Install&lt;/a>&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>go install -tags extended github.com/gohugoio/hugo@latest
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Mac 也可以使用Brew，省去配置&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>brew install hugo
@@ -406,9 +376,8 @@ hugo new posts/your-post.md hugo serve Hugo 图片
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>hugo serve
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Hugo 图片&lt;/p>
-&lt;p>存放在 content/images 下。markdown中引用时：&lt;code>![](../../images/xxx.jpg)&lt;/code>&lt;/p></content></item><item><title>60 Points First</title><link>https://theoriz0.github.io/posts/60-points-first/</link><pubDate>Sun, 05 Nov 2023 16:04:12 +0800</pubDate><guid>https://theoriz0.github.io/posts/60-points-first/</guid><description>来源：Bilibili
-我的加州理工教授告诉我60分更重要 硅谷有一句名言叫 move fast and break things 意思就是说要快速的行动 即便事情会被搞砸 每个人每天都有很多事情要执行 但是执行起来会很慢 因为感觉自己所具备条件不够完美 或者计划还不够周全 就会担心失败 担心做不到100分 所以迟迟都不会行动 其实我在刚开始读博的时候 每次做一件事情之前都喜欢暗示自己 要尽可能做到完美 这样最大影响就是给自己不必要的压力 让自己迟迟不能开始行动 其实100分根本不重要 60分才重要 因为60分至少让你有开始行动的动力 做一件100分事情的经历 可以帮你完成5件60分的事情 哪个对你帮助会更大呢 完美重要吗？比如这篇文章的markdown排版。 事情很多的时候更要把精力集中在重要的事情上。
-过早优化是万恶之源 —— 克努特优化原则。</description><content>&lt;p>来源：&lt;a href="https://www.bilibili.com/video/BV11H4y1R7Pm/">Bilibili&lt;/a>&lt;/p>
+&lt;p>存放在 content/images 下。markdown中引用时：&lt;code>![](../../images/xxx.jpg)&lt;/code>&lt;/p></description></item><item><title>60 Points First</title><link>https://theoriz0.github.io/posts/60-points-first/</link><pubDate>Sun, 05 Nov 2023 16:04:12 +0800</pubDate><guid>https://theoriz0.github.io/posts/60-points-first/</guid><description>&lt;p>来源：&lt;a class="link" href="https://www.bilibili.com/video/BV11H4y1R7Pm/" target="_blank" rel="noopener"
+>Bilibili&lt;/a>&lt;/p>
 &lt;pre tabindex="0">&lt;code>我的加州理工教授告诉我60分更重要
 硅谷有一句名言叫
 move fast and break things
@@ -434,7 +403,10 @@ move fast and break things
 哪个对你帮助会更大呢
 &lt;/code>&lt;/pre>&lt;p>完美重要吗？比如这篇文章的markdown排版。
 事情很多的时候更要把精力集中在重要的事情上。&lt;/p>
-&lt;p>过早优化是万恶之源 —— 克努特优化原则。&lt;/p></content></item><item><title>My FFmpeg Cheatsheet</title><link>https://theoriz0.github.io/posts/my-ffmpeg-cheatsheet/</link><pubDate>Sun, 05 Nov 2023 15:45:31 +0800</pubDate><guid>https://theoriz0.github.io/posts/my-ffmpeg-cheatsheet/</guid><description>ffmpeg 格式转换 ffmpeg -i A.mkv A.mp4 复制流 ffmpeg -i input.mkv -codec copy output.mp4 视频转换音频 $ ffmpeg -i .\Revenge.webm demo.mp3 #将 Revenge.webm 这个 MV 转换成了 mp3 歌曲 抽取音频命令 ffmpeg -i 3.mp4 -vn -y -acodec copy 3.aac ffmpeg -i 3.mp4 -vn -y -acodec copy 3.m4a 剪切 ffmpeg -ss 00:00:00 -t 00:00:30 -i test.mp4 -vcodec copy -acodec copy output.mp4 * -ss 指定从什么时间开始（hh:mm:ss） * -t 指定需要截取多长时间 * -i 指定输入文件 合并（非 MPEG-1, MPEG-2 PS, DV) Use this method when you want to avoid a re-encode and your format does not support file-level concatenation (most files used by general users do not support file-level concatenation).</description><content>&lt;h1 id="ffmpeg">ffmpeg&lt;/h1>
+&lt;p>过早优化是万恶之源 —— 克努特优化原则。&lt;/p>
+&lt;p>松弛 (Relaxation)：&lt;/p>
+&lt;p>A relaxation is an approximation of a difficult problem by a nearby problem that is easier to solve. A solution of the relaxed problem provides information about the original problem. from &lt;a class="link" href="https://en.wikipedia.org/wiki/Relaxation_%28approximation%29" target="_blank" rel="noopener"
+>Wikipedia&lt;/a>&lt;/p></description></item><item><title>My FFmpeg Cheatsheet</title><link>https://theoriz0.github.io/posts/my-ffmpeg-cheatsheet/</link><pubDate>Sun, 05 Nov 2023 15:45:31 +0800</pubDate><guid>https://theoriz0.github.io/posts/my-ffmpeg-cheatsheet/</guid><description>&lt;h1 id="ffmpeg">ffmpeg&lt;/h1>
 &lt;h2 id="格式转换">格式转换&lt;/h2>
 &lt;pre tabindex="0">&lt;code>ffmpeg -i A.mkv A.mp4
 &lt;/code>&lt;/pre>&lt;h2 id="复制流">复制流&lt;/h2>
@@ -469,12 +441,9 @@ ffmpeg -safe 0 -f concat -i list.txt -c copy output.mp4
 &lt;pre tabindex="0">&lt;code>ffmpeg -i video.m4s -i audio.m4s -c:v copy -c:a copy output.mp4
 &lt;/code>&lt;/pre>&lt;h2 id="yuv录屏">yuv录屏&lt;/h2>
 &lt;pre tabindex="0">&lt;code>ffmpeg -f gdigrab -t 15 -framerate 30 -i desktop -pix_fmt yuv420p -vcodec rawvideo -s 1920x1080 -y output.yuv
-&lt;/code>&lt;/pre></content></item><item><title>Golang WSL2 CentOS8 开发环境配置指南</title><link>https://theoriz0.github.io/posts/golang-wsl2-centos8-setup/</link><pubDate>Wed, 11 Jan 2023 22:32:58 +0800</pubDate><guid>https://theoriz0.github.io/posts/golang-wsl2-centos8-setup/</guid><description>获取 WSL CentOS8 mishamosher/CentOS-WSL
-安装并启动 CentOS8 解压并运行CentOS8.exe。
-Windows 命令行下运行：
-## 列出所有版本，确认 CentOS8 已安装成功 wsl --list ## 如果有多个发行版，可以将默认版本设为 CentOS8 wsl -s CentOS8 ## 启动。如果设置了默认版本，可以忽略 wsl -d CentOS8 设置 root 用户密码 passwd root 创建普通用户并加入sudo组 useradd [username] passwd [username] sed -i &amp;#39;/^root.*ALL=(ALL).*ALL/a\[username]\tALL=(ALL) \tALL&amp;#39; /etc/sudoers 替换 yum 源 mv /etc/yum.repos.d /etc/yum.repos.d.bak # 先备份原有的 Yum 源 mkdir /etc/yum.repos.d curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-vault-8.5.2111.repo yum clean all &amp;amp;&amp;amp; yum makecache 修改 WSL 默认用户 WSL 下：
-vi /etc/wsl.conf 文件内容为：</description><content>&lt;h2 id="获取-wsl-centos8">获取 WSL CentOS8&lt;/h2>
-&lt;p>&lt;a href="https://github.com/mishamosher/CentOS-WSL">mishamosher/CentOS-WSL&lt;/a>&lt;/p>
+&lt;/code>&lt;/pre></description></item><item><title>Golang WSL2 CentOS8 开发环境配置指南</title><link>https://theoriz0.github.io/posts/golang-wsl2-centos8-setup/</link><pubDate>Wed, 11 Jan 2023 22:32:58 +0800</pubDate><guid>https://theoriz0.github.io/posts/golang-wsl2-centos8-setup/</guid><description>&lt;h2 id="获取-wsl-centos8">获取 WSL CentOS8&lt;/h2>
+&lt;p>&lt;a class="link" href="https://github.com/mishamosher/CentOS-WSL" target="_blank" rel="noopener"
+>mishamosher/CentOS-WSL&lt;/a>&lt;/p>
 &lt;h2 id="安装并启动-centos8">安装并启动 CentOS8&lt;/h2>
 &lt;p>解压并运行&lt;code>CentOS8.exe&lt;/code>。&lt;/p>
 &lt;p>Windows 命令行下运行：&lt;/p>
@@ -563,7 +532,8 @@ vi /etc/wsl.conf 文件内容为：</description><content>&lt;h2 id="获取-wsl-
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>alias proxy&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;source ~/proxy.sh&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>proxy set
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="配置clash或其他代理软件">配置clash或其他代理软件&lt;/h3>
-&lt;p>详细可参考：&lt;a href="https://www.cnblogs.com/tuilk/p/16287472.html">WSL2配置代理&lt;/a>&lt;/p>
+&lt;p>详细可参考：&lt;a class="link" href="https://www.cnblogs.com/tuilk/p/16287472.html" target="_blank" rel="noopener"
+>WSL2配置代理&lt;/a>&lt;/p>
 &lt;p>开启代理软件的【allow lan/局域网】功能。&lt;/p>
 &lt;p>WSL 下：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>export ALL_PROXY&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://{ip}:{port}&amp;#34;&lt;/span>
@@ -654,10 +624,12 @@ vi /etc/wsl.conf 文件内容为：</description><content>&lt;h2 id="获取-wsl-
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="安装go环境">安装go环境&lt;/h2>
 &lt;p>（如果不需要 go 环境，可删去 .bashrc 的 GO 部分）&lt;/p>
 &lt;p>确认.bashrc的$GOVERSION，如果安装不同版本，修改之。&lt;/p>
-&lt;p>按照go官网下载go。&lt;a href="https://go.dev/dl/">Go官网下载地址&lt;/a>&lt;/p>
+&lt;p>按照go官网下载go。&lt;a class="link" href="https://go.dev/dl/" target="_blank" rel="noopener"
+>Go官网下载地址&lt;/a>&lt;/p>
 &lt;p>解压:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>rm -rf /usr/local/go &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> tar -C /usr/local/go/$GOVERSION -xzf go1.19.4.linux-amd64.tar.gz
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>详见 &lt;a href="https://go.dev/doc/install">Go官网安装指南&lt;/a>。&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>详见 &lt;a class="link" href="https://go.dev/doc/install" target="_blank" rel="noopener"
+>Go官网安装指南&lt;/a>。&lt;/p>
 &lt;p>此时 go version应该能输出版本。&lt;/p>
 &lt;h3 id="安装protoc">安装protoc&lt;/h3>
 &lt;p>（最新版本在(github.com)[https://github.com/protocolbuffers/protobuf/releases)，可根据需要自行调整命令)&lt;/p>
@@ -692,13 +664,15 @@ vi /etc/wsl.conf 文件内容为：</description><content>&lt;h2 id="获取-wsl-
 &lt;/ul>
 &lt;p>如果报 &lt;code>Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock&lt;/code>，可运行以下语句设置权限：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo setfacl --modify user:&amp;lt;user name or ID&amp;gt;:rw /var/run/docker.sock
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>(来源：&lt;a href="https://stackoverflow.com/questions/51342810/how-to-fix-dial-unix-var-run-docker-sock-connect-permission-denied-when-gro">StackOverflow&lt;/a>)&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>(来源：&lt;a class="link" href="https://stackoverflow.com/questions/51342810/how-to-fix-dial-unix-var-run-docker-sock-connect-permission-denied-when-gro" target="_blank" rel="noopener"
+>StackOverflow&lt;/a>)&lt;/p>
 &lt;p>如果报&lt;code>failed to solve with frontend dockerfile.v0: failed to create LLB definition&lt;/code>，需在 docker desktop 中配置:&lt;/p>
 &lt;ul>
 &lt;li>docker engine: &lt;code>&amp;quot;features&amp;quot;: {&amp;quot;buildkit&amp;quot;: false },&lt;/code>&lt;/li>
 &lt;/ul>
 &lt;p>并重新用&lt;code>setfacl&lt;/code>设置权限&lt;/p>
-&lt;p>（来源：&lt;a href="https://blog.csdn.net/qq_41240287/article/details/125236997">CSDN&lt;/a>）&lt;/p>
+&lt;p>（来源：&lt;a class="link" href="https://blog.csdn.net/qq_41240287/article/details/125236997" target="_blank" rel="noopener"
+>CSDN&lt;/a>）&lt;/p>
 &lt;h2 id="创建默认-k8s-环境">创建默认 K8S 环境&lt;/h2>
 &lt;p>在 Docker Desktop 中设置：&lt;/p>
 &lt;ul>
@@ -729,17 +703,17 @@ vi /etc/wsl.conf 文件内容为：</description><content>&lt;h2 id="获取-wsl-
 &lt;p>不建议关闭，因为 proxy.sh 脚本通过读取该文件获取 WSL 下 Windows 的 host ip。&lt;/p>
 &lt;p>新建文件：/etc/wsl.conf，内容如下：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>[network]generateResolvConf = false
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></content></item><item><title>关于这个博客</title><link>https://theoriz0.github.io/posts/about-this-blog/</link><pubDate>Wed, 11 Jan 2023 22:16:45 +0800</pubDate><guid>https://theoriz0.github.io/posts/about-this-blog/</guid><description>说明 博客工具：Hugo
-主题：terminal
-如何使用 git clone --recurse-submodules https://github.com/theoriz0/theoriz0.github.io 或者clone后
-git submodule update --init --recursive 下载主题
-Hugo Hugo cheatsheet</description><content>&lt;h2 id="说明">说明&lt;/h2>
-&lt;p>博客工具：&lt;a href="https://gohugo.io">Hugo&lt;/a>&lt;/p>
-&lt;p>主题：&lt;a href="https://github.com/panr/hugo-theme-terminal">terminal&lt;/a>&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>关于这个博客</title><link>https://theoriz0.github.io/posts/about-this-blog/</link><pubDate>Wed, 11 Jan 2023 22:16:45 +0800</pubDate><guid>https://theoriz0.github.io/posts/about-this-blog/</guid><description>&lt;h2 id="说明">说明&lt;/h2>
+&lt;p>博客工具：&lt;a class="link" href="https://gohugo.io" target="_blank" rel="noopener"
+>Hugo&lt;/a>&lt;/p>
+&lt;p>主题：&lt;del>&lt;a class="link" href="https://github.com/panr/hugo-theme-terminal" target="_blank" rel="noopener"
+>terminal&lt;/a>&lt;/del> &lt;a class="link" href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener"
+>hugo-theme-stack&lt;/a>&lt;/p>
 &lt;h2 id="如何使用">如何使用&lt;/h2>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git clone --recurse-submodules https://github.com/theoriz0/theoriz0.github.io
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>或者clone后&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git submodule update --init --recursive
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>下载主题&lt;/p>
 &lt;h2 id="hugo">Hugo&lt;/h2>
-&lt;p>&lt;a href="https://https://theoriz0.github.io/posts/my-hugo-cheatsheet/">Hugo cheatsheet&lt;/a>&lt;/p></content></item></channel></rss>
+&lt;p>&lt;a class="link" href="https://https://theoriz0.github.io/posts/my-hugo-cheatsheet/" target="_blank" rel="noopener"
+>Hugo cheatsheet&lt;/a>&lt;/p></description></item></channel></rss>

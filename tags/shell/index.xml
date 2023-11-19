@@ -1,12 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Shell on theoriz0's blog</title><link>https://theoriz0.github.io/tags/shell/</link><description>Recent content in Shell on theoriz0's blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 15 Nov 2023 11:59:46 +0800</lastBuildDate><atom:link href="https://theoriz0.github.io/tags/shell/index.xml" rel="self" type="application/rss+xml"/><item><title>Grep 命令检索代码</title><link>https://theoriz0.github.io/posts/grep-code-searching/</link><pubDate>Wed, 15 Nov 2023 11:59:46 +0800</pubDate><guid>https://theoriz0.github.io/posts/grep-code-searching/</guid><description>Grep 常用选项介绍 -r，递归查找
--n，搜索结果显示行号
--i，忽略大小写
--v，反向匹配
--w，匹配整个单词
--E，匹配扩展的正则表达式
--l，只打印匹配的文件名。
-递归查找并显示行号 grep -rn memcpy grep -rni memcpy #忽略大小写 限制文件类型或其它条件 grep -rn memcpy | grep -v .o.cmd #排除.txt文件 grep -rn memcpy | grep -Ev &amp;#39;\.txt\.md|\.log|\.yaml&amp;#39; #使用正则表达式排除多种类型 grep -rn --exclude=*.txt memcpy #不在.txt中搜索 grep -rn --include=*.go memcpy #只在.go中搜索 限制目录 grep -rn --exclude-dir=out memcpy grep -rn --exclude-dir=out --exclude-dir=doc memcpy 匹配整个单词 grep -rnw memcpy 如果想过滤zmemcpy或者memcpyl，但是想保留MCD_memcpy, memcpy_16，需要写正则表达式。
-查看查找结果的上下文 grep -rn -B 3 -A 2 MEMCPY #匹配的前三行+后两行 grep 配合 find find .</description><content>&lt;h2 id="grep-常用选项介绍">Grep 常用选项介绍&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Shell on theoriz0's blog</title><link>https://theoriz0.github.io/tags/shell/</link><description>Recent content in Shell on theoriz0's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 15 Nov 2023 11:59:46 +0800</lastBuildDate><atom:link href="https://theoriz0.github.io/tags/shell/index.xml" rel="self" type="application/rss+xml"/><item><title>Grep 命令检索代码</title><link>https://theoriz0.github.io/posts/grep-code-searching/</link><pubDate>Wed, 15 Nov 2023 11:59:46 +0800</pubDate><guid>https://theoriz0.github.io/posts/grep-code-searching/</guid><description>&lt;h2 id="grep-常用选项介绍">Grep 常用选项介绍&lt;/h2>
 &lt;ul>
 &lt;li>
 &lt;p>&lt;code>-r&lt;/code>，递归查找&lt;/p>
@@ -50,5 +42,7 @@
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>find . -iname Makefile -o -iname *.inc -o -iname *.mk | xargs grep -rn CFLAGS
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>管道实现的是将前面的输出stdout作为后面的输入stdin，但是有些命令不接受管道的传递方式。例如：ls，这是为什么呢？因为有些命令希望管道传递过来的是参数，但是直接使用管道有时无法传递到命令的参数位。这时候就需要xargs，xargs实现的是将管道传递过来的stdin进行处理然后传递到命令的参数位置上。&lt;/p>
 &lt;h2 id="参考资料">参考资料&lt;/h2>
-&lt;p>&lt;a href="https://blog.csdn.net/guyongqiangx/article/details/70161189">使用grep搜索代码的几个示例&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://www.jianshu.com/p/676353506f0b">Linux那点事-xargs命令详解&lt;/a>&lt;/p></content></item></channel></rss>
+&lt;p>&lt;a class="link" href="https://blog.csdn.net/guyongqiangx/article/details/70161189" target="_blank" rel="noopener"
+>使用grep搜索代码的几个示例&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://www.jianshu.com/p/676353506f0b" target="_blank" rel="noopener"
+>Linux那点事-xargs命令详解&lt;/a>&lt;/p></description></item></channel></rss>

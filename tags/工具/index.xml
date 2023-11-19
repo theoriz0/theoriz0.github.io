@@ -1,21 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>工具 on theoriz0's blog</title><link>https://theoriz0.github.io/tags/%E5%B7%A5%E5%85%B7/</link><description>Recent content in 工具 on theoriz0's blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 09 Nov 2023 10:23:52 +0800</lastBuildDate><atom:link href="https://theoriz0.github.io/tags/%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml"/><item><title>通过Rclone + 对象存储实现同步盘</title><link>https://theoriz0.github.io/posts/my-rclone-cos/</link><pubDate>Thu, 09 Nov 2023 10:23:52 +0800</pubDate><guid>https://theoriz0.github.io/posts/my-rclone-cos/</guid><description>下载安装 https://rclone.org/downloads/ s 如果需要挂载为磁盘，windows下需要安装winfsp：https://winfsp.dev/rel/
-配置cos： rclone config
-腾讯云： https://rclone.org/s3/#tencent-cos
-阿里云 https://rclone.org/s3/#alibaba-oss
-使用（假设配置将存储环境命名为cos）： 列出桶：rclone lsd cos
-本地同步COS：rclone sync local-folder cos:bucket-name/folder
-COS同步本地：rclone sync cos:bucket-name/folder local-folder
-同步前，建议使用 &amp;ndash;dry-run 参数，确认哪些文件将会被删除和下载，避免不必要的资源浪费。
-其他命令 rclone mkdir cos:rclone-test-1251668577，创建存储桶rclone-test-1251668577 rclone ls cos:rclone-test-1251668577，列出rclone-test-1251668577根目录下的文件 rclone copy local-folder/ cos:rclone-test-1251668577/，拷贝本地文件或目录到COS上，不会删除目的端的其他文件 rclone copy cos:rclone-test-1251668577 cos:rclone-test-backup-1251668577，同一个存储，在服务端使用copy操作拷贝文件 rclone sync local-folder/ cos:rclone-test-1251668577/ --backup-dir cos:rclone-test-backup-1251668577/20191011，将本地文件同步到cos，并备份被删除或修改的文件到备份存储桶中 rclone copy --max-age 24h --progress --no-traverse local-folder/ cos:rclone-test-1251668577/，--max-age 24h过滤出来最近24小时变更过的文件，--progress显示拷贝进度，--no-traverse在从源拷贝少量文件到目的中大量目的文件时，速度会更快 rclone check local-folder/ cos:rclone-test-1251668577/ --one-way，查看本地文件是否都同步到了目的端，默认校验修改时间和大小 rclone --min-size 500B lsl cos:rclone-test-1251668577/，查看存储桶中500B以上的文件列表 rclone --dry-run --min-size 300B delete cos:rclone-test-1251668577/，查看存储桶中500B以上的待删除文件列表 rclone delete oss:oss-test-bucket-1215715707/ --include=/stl-views.</description><content>&lt;h2 id="下载安装">下载安装&lt;/h2>
-&lt;p>&lt;a href="https://rclone.org/downloads/">https://rclone.org/downloads/&lt;/a>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>工具 on theoriz0's blog</title><link>https://theoriz0.github.io/tags/%E5%B7%A5%E5%85%B7/</link><description>Recent content in 工具 on theoriz0's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 09 Nov 2023 10:23:52 +0800</lastBuildDate><atom:link href="https://theoriz0.github.io/tags/%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml"/><item><title>通过Rclone + 对象存储实现同步盘</title><link>https://theoriz0.github.io/posts/my-rclone-cos/</link><pubDate>Thu, 09 Nov 2023 10:23:52 +0800</pubDate><guid>https://theoriz0.github.io/posts/my-rclone-cos/</guid><description>&lt;h2 id="下载安装">下载安装&lt;/h2>
+&lt;p>&lt;a class="link" href="https://rclone.org/downloads/" target="_blank" rel="noopener"
+>https://rclone.org/downloads/&lt;/a>
 s
 如果需要挂载为磁盘，windows下需要安装winfsp：https://winfsp.dev/rel/&lt;/p>
 &lt;h2 id="配置cos">配置cos：&lt;/h2>
 &lt;p>rclone config&lt;/p>
 &lt;p>腾讯云：
-&lt;a href="https://rclone.org/s3/#tencent-cos">https://rclone.org/s3/#tencent-cos&lt;/a>&lt;/p>
+&lt;a class="link" href="https://rclone.org/s3/#tencent-cos" target="_blank" rel="noopener"
+>https://rclone.org/s3/#tencent-cos&lt;/a>&lt;/p>
 &lt;p>阿里云
-&lt;a href="https://rclone.org/s3/#alibaba-oss">https://rclone.org/s3/#alibaba-oss&lt;/a>&lt;/p>
+&lt;a class="link" href="https://rclone.org/s3/#alibaba-oss" target="_blank" rel="noopener"
+>https://rclone.org/s3/#alibaba-oss&lt;/a>&lt;/p>
 &lt;h2 id="使用假设配置将存储环境命名为cos">使用（假设配置将存储环境命名为cos）：&lt;/h2>
 &lt;p>列出桶：rclone lsd cos&lt;/p>
 &lt;p>本地同步COS：rclone sync local-folder cos:bucket-name/folder&lt;/p>
@@ -42,14 +37,10 @@ s
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>rclone md5sum cos:rclone-test-1251668577/，为所有文件生成MD5值
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>rclone tree cos:rclone-test-1251668577/ -C -D，显示文本格式的目录树结构，-C选项带颜色显示，-D显示上次修改时间
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="参考资料">参考资料&lt;/h2>
-&lt;p>&lt;a href="https://cloud.tencent.com/developer/article/1520867">https://cloud.tencent.com/developer/article/1520867&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://rclone.org/">https://rclone.org/&lt;/a>&lt;/p></content></item><item><title>My Git Cheatsheet</title><link>https://theoriz0.github.io/posts/my-git-cheatsheet/</link><pubDate>Sun, 05 Nov 2023 16:45:52 +0800</pubDate><guid>https://theoriz0.github.io/posts/my-git-cheatsheet/</guid><description>git stash git stash save &amp;ldquo;save message&amp;rdquo; : 执行暂存 （1）git stash save &amp;ldquo;save message&amp;rdquo; : 执行存储时，添加备注，方便查找，只有git stash 也要可以的，但查找时不方便识别。
-（2）git stash list ：查看stash了哪些存储
-（3）git stash show ：显示做了哪些改动，默认show第一个存储,如果要显示其他存贮，后面加stash@{$num}，比如第二个 git stash show stash@{1}
-（4）git stash show -p : 显示第一个存储的改动，如果想显示其他存存储，命令：git stash show stash@{$num} -p ，比如第二个：git stash show stash@{1} -p
-（5）git stash apply :应用某个存储,但不会把存储从存储列表中删除，默认使用第一个存储,即stash@{0}，如果要使用其他个，git stash apply stash@{$num} ， 比如第二个：git stash apply stash@{1}
-（6）git stash pop ：命令恢复之前缓存的工作目录，将缓存堆栈中的对应stash删除，并将对应修改应用到当前的工作目录下,默认为第一个stash,即stash@{0}，如果要应用并删除其他stash，命令：git stash pop stash@{$num} ，比如应用并删除第二个：git stash pop stash@{1}
-（7）git stash drop stash@{$num} ：丢弃stash@{$num}存储，从列表中删除这个存储</description><content>&lt;h2 id="git-stash">git stash&lt;/h2>
+&lt;p>&lt;a class="link" href="https://cloud.tencent.com/developer/article/1520867" target="_blank" rel="noopener"
+>https://cloud.tencent.com/developer/article/1520867&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://rclone.org/" target="_blank" rel="noopener"
+>https://rclone.org/&lt;/a>&lt;/p></description></item><item><title>My Git Cheatsheet</title><link>https://theoriz0.github.io/posts/my-git-cheatsheet/</link><pubDate>Sun, 05 Nov 2023 16:45:52 +0800</pubDate><guid>https://theoriz0.github.io/posts/my-git-cheatsheet/</guid><description>&lt;h2 id="git-stash">git stash&lt;/h2>
 &lt;p>git stash save &amp;ldquo;save message&amp;rdquo; : 执行暂存
 （1）git stash save &amp;ldquo;save message&amp;rdquo; : 执行存储时，添加备注，方便查找，只有git stash 也要可以的，但查找时不方便识别。&lt;/p>
 &lt;p>（2）git stash list ：查看stash了哪些存储&lt;/p>
@@ -67,21 +58,19 @@ s
 &lt;p>git reset &amp;ndash;hard HASH #返回到某个节点，不保留修改，已有的改动会丢失。
 git reset &amp;ndash;soft HASH #返回到某个节点, 保留修改，已有的改动会保留，在未提交中，git status或git diff可看。&lt;/p>
 &lt;h2 id="submodule">submodule&lt;/h2>
-&lt;p>git clone &amp;ndash;recurse-submodules, or run git submodule update &amp;ndash;init &amp;ndash;recursive&lt;/p></content></item><item><title>常用的一些应用</title><link>https://theoriz0.github.io/posts/my-tool-apps/</link><pubDate>Sun, 05 Nov 2023 16:35:24 +0800</pubDate><guid>https://theoriz0.github.io/posts/my-tool-apps/</guid><description>语音转文字 讯飞：准确度略高，通过声纹可以区分说话人，贵。重要音频可以用。 Whisper：开源，免费，无法区分说话人。 Win客户端 | 对应模型（作者推荐 ggml-medium.bin） Python环境可以使用WhisperX
-OCR 白描：
-图表绘制 Markdown + Mermaid，画时序图很方表。 流程图：Draw.io
-多媒体 ffmpeg： 其实对于个人来说（至少对我），最常用的不是转码，甚至说反而是不去转码，而是无损的包装格式转换，音频抽取，剪切，合并。
-多端同步 Feem Bark
-字典 汉语：新华字典、现代汉语词典、辞海 日语：新明解 英语：LDOCE 6 以及iOS、MacOS自带的字典们（无法从苹果全家桶抽身的重要原因）。
-浏览器插件 Mark 还没用，未来可能会尝试： (Rustdesk)[https://rustdesk.com/index.html]：开源自建Teamviewer。</description><content>&lt;h2 id="语音转文字">语音转文字&lt;/h2>
+&lt;p>git clone &amp;ndash;recurse-submodules, or run git submodule update &amp;ndash;init &amp;ndash;recursive&lt;/p></description></item><item><title>常用的一些应用</title><link>https://theoriz0.github.io/posts/my-tool-apps/</link><pubDate>Sun, 05 Nov 2023 16:35:24 +0800</pubDate><guid>https://theoriz0.github.io/posts/my-tool-apps/</guid><description>&lt;h2 id="语音转文字">语音转文字&lt;/h2>
 &lt;p>讯飞：准确度略高，通过声纹可以区分说话人，贵。重要音频可以用。
 Whisper：开源，免费，无法区分说话人。
-&lt;a href="https://github.com/Const-me/Whisper">Win客户端&lt;/a> | &lt;a href="https://huggingface.co/ggerganov/whisper.cpp/tree/main">对应模型&lt;/a>（作者推荐 ggml-medium.bin）
-Python环境可以使用&lt;a href="https://github.com/m-bain/whisperX">WhisperX&lt;/a>&lt;/p>
+&lt;a class="link" href="https://github.com/Const-me/Whisper" target="_blank" rel="noopener"
+>Win客户端&lt;/a> | &lt;a class="link" href="https://huggingface.co/ggerganov/whisper.cpp/tree/main" target="_blank" rel="noopener"
+>对应模型&lt;/a>（作者推荐 ggml-medium.bin）
+Python环境可以使用&lt;a class="link" href="https://github.com/m-bain/whisperX" target="_blank" rel="noopener"
+>WhisperX&lt;/a>&lt;/p>
 &lt;h2 id="ocr">OCR&lt;/h2>
 &lt;p>白描：&lt;/p>
 &lt;h2 id="图表绘制">图表绘制&lt;/h2>
-&lt;p>Markdown + &lt;a href="https://mermaid.js.org/intro/">Mermaid&lt;/a>，画时序图很方表。
+&lt;p>Markdown + &lt;a class="link" href="https://mermaid.js.org/intro/" target="_blank" rel="noopener"
+>Mermaid&lt;/a>，画时序图很方表。
 流程图：Draw.io&lt;/p>
 &lt;h2 id="多媒体">多媒体&lt;/h2>
 &lt;p>ffmpeg：
@@ -97,4 +86,4 @@ Bark&lt;/p>
 &lt;h2 id="浏览器插件">浏览器插件&lt;/h2>
 &lt;h2 id="mark">Mark&lt;/h2>
 &lt;p>还没用，未来可能会尝试：
-(Rustdesk)[https://rustdesk.com/index.html]：开源自建Teamviewer。&lt;/p></content></item></channel></rss>
+(Rustdesk)[https://rustdesk.com/index.html]：开源自建Teamviewer。&lt;/p></description></item></channel></rss>
