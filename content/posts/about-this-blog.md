@@ -29,6 +29,6 @@ git submodule update --init --recursive
 
 下载主题
 
-## Hugo
+## Hugo 常用操作
 
-[Hugo cheatsheet](https://https://theoriz0.github.io/posts/my-hugo-cheatsheet/)
+[Hugo cheatsheet](/posts/my-hugo-cheatsheet/)
